@@ -1,0 +1,19 @@
+"=============================================================================
+"    Description: シンタックスハイライト設定
+"         Author: Shintaro Kurosawa
+"  Last Modified: 2014-05-28 09:08
+"        Version: 1.0
+"=============================================================================
+"----------------------------------------
+" Description: markdown記法のシンタックスハイライト
+"              https://github.com/tpope/vim-markdown
+"              上記の設定を参照
+"              ~/.vim/ftdetect/markdown.vim
+"              ~/.vim/ftplugin/markdown.vim
+"              ~/.vim/syntax/markdown.vim
+"              上記のファイルを設置
+"    Modified: 2014-05-28
+"----------------------------------------
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+

@@ -1,0 +1,28 @@
+"=============================================================================
+"    Description: file
+"                 ファイル設定
+"         Author: Shintaro Kurosawa
+"  Last Modified: 2014-05-08 09:08
+"        Version: 1.0
+"=============================================================================
+" ファイル
+" imap <C-c><C-c>  <ESC>:qa<CR>
+" imap <C-x><C-c>  <ESC>:qa!<CR>
+" imap <C-w><C-w>  <ESC>:w<CR>
+" imap <C-x><C-w>  <ESC>:w!<CR>
+" imap <C-x><C-f>  <ESC>:e 
+
+" swap ファイル
+" if ! isdirectory($HOME.'/.vim/swap')
+"     call mkdir($HOME.'/.vim/swap', 'p')
+" endif
+" set directory=~/.vim/swap
+" 編集履歴を保存して終了する
+if has('persistent_undo')
+    if ! isdirectory($HOME.'/.vim/undo')
+        call mkdir($HOME.'/.vim/undo', 'p')
+    endif
+    set undodir=~/.vim/undo
+    set undofile
+endif
+

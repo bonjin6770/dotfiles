@@ -1,0 +1,530 @@
+"=============================================================================
+"    Description: mac用設定
+"         Author: Shintaro Kurosawa
+"  Last Modified: 2014-05-18 18:36
+"        Version: 1.0
+"=============================================================================
+"----------------------------------------
+" Description:
+"    Modified:
+"----------------------------------------
+
+
+set nocompatible
+set encoding=utf-8
+"scriptencoding cp932
+scriptencoding unix
+" scriptencodingと、このファイルのエンコーディングが一致するよう注意！
+" scriptencodingは、vimの内部エンコーディングと同じものを推奨します。
+" 改行コードは set fileformat=unix に設定するとunixでも使えます。
+
+" Windowsで内部エンコーディングを cp932以外にしていて、
+" 環境変数に日本語を含む値を設定したい場合は Let を使用します。
+" Letは vimrc(オールインワンパッケージの場合)と encode.vim で定義されます。
+" Let $HOGE=$USERPROFILE.'/ほげ'
+
+"----------------------------------------
+" ユーザーランタイムパス設定
+"----------------------------------------
+" Windows, unixでのruntimepathの違いを吸収するためのもの。
+" $MY_VIMRUNTIMEはユーザーランタイムディレクトリを示す。
+" :echo $MY_VIMRUNTIMEで実際のパスを確認できます。
+if isdirectory($HOME . '/.vim')
+  let $MY_VIMRUNTIME = $HOME.'/.vim'
+elseif isdirectory($HOME . '\vimfiles')
+  let $MY_VIMRUNTIME = $HOME.'\vimfiles'
+elseif isdirectory($VIM . '\vimfiles')
+  let $MY_VIMRUNTIME = $VIM.'\vimfiles'
+endif
+
+" ランタイムパスを通す必要のあるプラグインを使用する場合、
+" $MY_VIMRUNTIMEを使用すると Windows/Linuxで切り分ける必要が無くなります。
+" 例) vimfiles/qfixapp (Linuxでは~/.vim/qfixapp)にランタイムパスを通す場合
+" set runtimepath+=$MY_VIMRUNTIME/qfixapp
+
+"----------------------------------------
+" 内部エンコーディング指定
+"----------------------------------------
+" 内部エンコーディングのUTF-8化と文字コードの自動認識設定をencode.vimで行う。
+" オールインワンパッケージの場合 vimrcで設定されます。
+" エンコーディング指定や文字コードの自動認識設定が適切に設定されている場合、
+" 次行の encode.vim読込部分はコメントアウトして下さい。
+" silent! source $MY_VIMRUNTIME/pluginjp/encode.vim
+" scriptencodingと異なる内部エンコーディングに変更する場合、
+" 変更後にもscriptencodingを指定しておくと問題が起きにくくなります。
+" scriptencoding cp932
+
+"----------------------------------------
+" システム設定
+"----------------------------------------
+" mswin.vimを読み込む
+" source $VIMRUNTIME/mswin.vim
+" behave mswin
+""""""""""""""""""""""""""""""
+"バックアップファイルのシステム設定
+""""""""""""""""""""""""""""""
+" ファイルの上書きの前にバックアップを作る/作らない
+" set writebackupを指定してもオプション 'backup' がオンでない限り、
+" バックアップは上書きに成功した後に削除される。
+set nowritebackup
+"バックアップファイルの作成場所指定
+"set backupdir=$HOME\vimfiles\backup
+"バックアップファイルの拡張子変更
+set backupext=.back
+"バックアップファイルの無効
+set nobackup
+"スワップファイルの設定
+"set swapfile
+set noswapfile
+"スワップファイルの作成場所指定
+"set directory=$HOME\vimfiles\swapfile
+if version >= 703
+  " 再読込、vim終了後も継続するアンドゥ(7.3)
+  " set undofile
+  " アンドゥの保存場所(7.3)
+  " set undodir=.
+endif
+" set noswapfile
+" viminfoを作成しない
+set viminfo=
+
+""""""""""""""""""""""""""""""
+" クリップボードを共有
+set clipboard+=unnamed
+" 8進数を無効にする。<C-a>,<C-x>に影響する
+set nrformats-=octal
+" キーコードやマッピングされたキー列が完了するのを待つ時間(ミリ秒)
+set timeout timeoutlen=3000 ttimeoutlen=100
+" 編集結果非保存のバッファから、新しいバッファを開くときに警告を出さない
+set hidden
+" ヒストリの保存数
+set history=50
+" 日本語の行の連結時には空白を入力しない
+set formatoptions+=mM
+" Visual blockモードでフリーカーソルを有効にする
+set virtualedit=block
+" カーソルキーで行末／行頭の移動可能に設定
+set whichwrap=b,s,h,l,[,],<,>
+" バックスペースでインデントや改行を削除できるようにする
+set backspace=indent,eol,start
+" □や○の文字があってもカーソル位置がずれないようにする
+set ambiwidth=double
+" コマンドライン補完するときに強化されたものを使う
+set wildmenu
+" マウスを有効にする
+if has('mouse')
+  set mouse=a
+endif
+" pluginを使用可能にする
+filetype plugin indent on
+
+"----------------------------------------
+" 検索
+"----------------------------------------
+" 検索の時に大文字小文字を区別しない
+" ただし大文字小文字の両方が含まれている場合は大文字小文字を区別する
+set ignorecase
+set smartcase
+" 検索時にファイルの最後まで行ったら最初に戻る
+set wrapscan
+" インクリメンタルサーチ
+set incsearch
+" 検索文字の強調表示
+set hlsearch
+" w,bの移動で認識する文字
+" set iskeyword=a-z,A-Z,48-57,_,.,-,>
+" vimgrep をデフォルトのgrepとする場合internal
+" set grepprg=internal
+
+"----------------------------------------
+" 表示設定
+"----------------------------------------
+" スプラッシュ(起動時のメッセージ)を表示しない
+" set shortmess+=I
+" エラー時の音とビジュアルベルの抑制(gvimは.gvimrcで設定)
+set noerrorbells
+set novisualbell
+set visualbell t_vb=
+" マクロ実行中などの画面再描画を行わない
+" set lazyredraw
+" Windowsでディレクトリパスの区切り文字表示に / を使えるようにする
+set shellslash
+" 行番号表示
+set number
+if version >= 703
+  " 相対行番号表示(7.3)
+  " set relativenumber
+endif
+" 括弧の対応表示時間
+set showmatch matchtime=1
+" タブを設定
+set ts=2 sw=2 sts=2
+" 自動的にインデントする
+set autoindent
+"新しい行を作ったときに高度な自動インデントを行う
+set smartindent
+" Cインデントの設定
+set cinoptions+=:0
+" タイトルを表示
+set title
+" コマンドラインの高さ (gvimはgvimrcで指定)
+" set cmdheight=2
+set laststatus=2
+" コマンドをステータス行に表示
+set showcmd
+" 画面最後の行をできる限り表示する
+set display=lastline
+" Tab、行末の半角スペースを明示的に表示する
+" set list
+" set listchars=tab:^\ ,trail:~
+" Tabキー押下でスペース挿入
+set expandtab
+
+" ハイライトを有効にする
+if &t_Co > 2 || has('gui_running')
+  syntax on
+endif
+" 色テーマ設定
+" gvimの色テーマは.gvimrcで指定する
+" colorscheme mycolor
+
+""""""""""""""""""""""""""""""
+" ステータスラインに文字コード等表示
+" iconvが使用可能の場合、カーソル上の文字コードをエンコードに応じた表示にするFencB()を使用
+""""""""""""""""""""""""""""""
+if has('iconv')
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=[0x%{FencB()}]\ (%v,%l)/%L%8P\ 
+else
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v,%l)/%L%8P\ 
+endif
+
+" FencB() : カーソル上の文字コードをエンコードに応じた表示にする
+function! FencB()
+  let c = matchstr(getline('.'), '.', col('.') - 1)
+  let c = iconv(c, &enc, &fenc)
+  return s:Byte2hex(s:Str2byte(c))
+endfunction
+
+function! s:Str2byte(str)
+  return map(range(len(a:str)), 'char2nr(a:str[v:val])')
+endfunction
+
+function! s:Byte2hex(bytes)
+  return join(map(copy(a:bytes), 'printf("%02X", v:val)'), '')
+endfunction
+""""""""""""""""""""""""""""""
+
+"----------------------------------------
+" diff/patch
+"----------------------------------------
+" diffの設定
+if has('win32') || has('win64')
+  set diffexpr=MyDiff()
+  function! MyDiff()
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    let cmd = '!diff ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+    silent execute cmd
+  endfunction
+endif
+
+" 現バッファの差分表示(変更箇所の表示)
+command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+" ファイルまたはバッファ番号を指定して差分表示。#なら裏バッファと比較
+command! -nargs=? -complete=file Diff if '<args>'=='' | browse vertical diffsplit|else| vertical diffsplit <args>|endif
+" パッチコマンド
+set patchexpr=MyPatch()
+function! MyPatch()
+   call system($VIM."\\'.'patch -o " . v:fname_out . " " . v:fname_in . " < " . v:fname_diff)
+endfunction
+
+"----------------------------------------
+" ノーマルモード
+"----------------------------------------
+" ヘルプ検索
+nnoremap <F1> K
+" 現在開いているvimスクリプトファイルを実行
+nnoremap <F8> :source %<CR>
+" 強制全保存終了を無効化
+nnoremap ZZ <Nop>
+" カーソルをj k では表示行で移動する。物理行移動は<C-n>,<C-p>
+" キーボードマクロには物理行移動を推奨
+" h l は行末、行頭を超えることが可能に設定(whichwrap)
+nnoremap <Down> gj
+nnoremap <Up>   gk
+nnoremap h <Left>zv
+nnoremap j gj
+nnoremap k gk
+nnoremap l <Right>zv
+
+"----------------------------------------
+" 挿入モード
+"----------------------------------------
+""""""""""""""""""""""""""""""
+"コマンドラインの移動系
+""""""""""""""""""""""""""""""
+" Ctrl+Nでコマンドライン履歴を一つ進む
+:cnoremap <C-N>		<Down>
+" Ctrl+Pでコマンドライン履歴を一つ戻る
+:cnoremap <C-P>		<Up>
+
+"----------------------------------------
+" Vimスクリプト
+"----------------------------------------
+""""""""""""""""""""""""""""""
+" ファイルを開いたら前回のカーソル位置へ移動
+" $VIMRUNTIME/vimrc_example.vim
+""""""""""""""""""""""""""""""
+augroup vimrcEx
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g`\"" | endif
+augroup END
+
+""""""""""""""""""""""""""""""
+" 挿入モード時、ステータスラインのカラー変更
+""""""""""""""""""""""""""""""
+let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
+
+if has('syntax')
+  augroup InsertHook
+    autocmd!
+    autocmd InsertEnter * call s:StatusLine('Enter')
+    autocmd InsertLeave * call s:StatusLine('Leave')
+  augroup END
+endif
+" if has('unix') && !has('gui_running')
+"   " ESCですぐに反映されない対策
+"   inoremap <silent> <ESC> <ESC>
+" endif
+
+let s:slhlcmd = ''
+function! s:StatusLine(mode)
+  if a:mode == 'Enter'
+    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+    silent exec g:hi_insert
+  else
+    highlight clear StatusLine
+    silent exec s:slhlcmd
+    redraw
+  endif
+endfunction
+
+function! s:GetHighlight(hi)
+  redir => hl
+  exec 'highlight '.a:hi
+  redir END
+  let hl = substitute(hl, '[\r\n]', '', 'g')
+  let hl = substitute(hl, 'xxx', '', '')
+  return hl
+endfunction
+
+""""""""""""""""""""""""""""""
+" 全角スペースを表示
+""""""""""""""""""""""""""""""
+" コメント以外で全角スペースを指定しているので、scriptencodingと、
+" このファイルのエンコードが一致するよう注意！
+" 強調表示されない場合、ここでscriptencodingを指定するとうまくいく事があります。
+ scriptencoding cp932
+function! ZenkakuSpace()
+  silent! let hi = s:GetHighlight('ZenkakuSpace')
+  if hi =~ 'E411' || hi =~ 'cleared$'
+    highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
+  endif
+endfunction
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme       * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  augroup END
+  call ZenkakuSpace()
+endif
+
+" フォント設定:
+"
+if has('win32')
+  " Windows用
+  set guifont=MS_Gothic:h12:cSHIFTJIS
+  "set guifont=MS_Mincho:h12:cSHIFTJIS
+  " 行間隔の設定
+  set linespace=1
+  " 一部のUCS文字の幅を自動計測して決める
+  if has('kaoriya')
+    set ambiwidth=auto
+  endif
+elseif has('gui_macvim')
+  " set guifont=Osaka-Mono:h16
+  set guifont=Ricty Regular:h16
+elseif has('mac')
+  " set guifont=Osaka－等幅:h16
+  set guifont=Ricty Regular:h16
+elseif has('xfontset')
+  " UNIX用 (xfontsetを使用)
+  set guifontset=a14,r14,k14
+  set guifont=Ricty Regular:h16
+endif
+
+" Unite.vim
+" バッファ一覧
+noremap <C-U><C-B> :Unite buffer<CR>
+" ファイル一覧
+noremap <C-U><C-F> :UniteWithBufferDir -buffer-name=files file<CR>
+" 最近使ったファイルの一覧
+noremap <C-U><C-R> :Unite file_mru<CR>
+" レジスタ一覧
+noremap <C-U><C-Y> :Unite -buffer-name=register register<CR>
+" ファイルとバッファ
+noremap <C-U><C-U> :Unite buffer file_mru<CR>
+" ブックマーク表示
+noremap <C-U><C-M> :Unite bookmark<CR>
+" 全部
+noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" ESCキーを２回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :<ESC>:q<CR>
+" Unite bookmarkのアクションをvimfilerにする
+" call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+" Unite.vim END
+
+" neocomplcache
+" neocomplcacheを起動時に有効化する
+" let g:neocomplcache_enable_at_startup = 1
+" " 大文字が入力されるまで大文字小文字の区別を無視する
+" let g:neocomplcache_enable_smart_case = 1
+" " _(アンダーバー)区切りの補完を有効化します
+" let g:neocomplcache_enable_underbar_completion = 1
+" " シンタックスをキャッシュするときの最小文字長を3にしています。
+" let g:neocomplcache_min_syntax_length = 3
+" " ディクショナリ定義
+" let g:neocomplcache_dictionary_filetype_lists = {
+"     \ 'default' : '',
+"     \ 'vimshell' : $HOME.'/.vimshell_hist',
+"     \ 'scheme' : $HOME.'/.gosh_completions',
+"     \ 'php' : $HOME . '/.vim/dict/php.dict'
+"         \ }
+" " Define keyword.
+" if !exists('g:neocomplcache_keyword_patterns')
+"     let g:neocomplcache_keyword_patterns = {}
+" endif
+" " キーワードパターンの設定
+" let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+" " 補完ウィンドウの設定
+" set completeopt=menuone
+" " ポップアップメニューで表示される候補の数
+" let g:neocomplcache_max_list = 20
+" "tabで補完候補の選択を行う
+" "inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+" " inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+" " スニペットを展開する。スニペットが関係しないところでは行末まで削除
+" imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+" smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+" " 前回行われた補完をキャンセルします
+" inoremap <expr><C-g> neocomplcache#undo_completion()
+" " 補完候補のなかから、共通する部分を補完します
+" inoremap <expr><C-l> neocomplcache#complete_common_string()
+" " <C-h>や<BS>を押したときに確実にポップアップを削除します
+" inoremap <expr><C-h> neocomplcache#smart_close_popup().”\<C-h>
+" " 現在選択している候補を確定します
+" inoremap <expr><C-y> neocomplcache#close_popup()
+" " 現在選択している候補をキャンセルし、ポップアップを閉じます
+" inoremap <expr><C-e> neocomplcache#cancel_popup()
+" " 改行で補完ウィンドウを閉じる
+" inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+" " 手動でneocomplcacheを起動する
+" inoremap <expr><C-n> neocomplcache#start_manual_complete()
+" " 自動でneocomplcacheが起動するのをやめる
+" let g:neocomplcache_disable_auto_complete = 1
+" neocomplcache END"
+
+" VimFiler
+" セーフモードを無効にした状態で起動する
+" let g:vimfiler_safe_mode_by_default = 0
+" nnoremap <F2> :VimFiler -buffer-name=exploer -split -winwidth=45 -toggle -no-quit<CR>
+
+" Edit file by tabedit.
+" let g:vimfiler_edit_action = 'tabopen'
+
+" VimFiler END
+
+" 「日本語入力固定モード」の動作モード
+let IM_CtrlMode = 4
+" 「日本語入力固定モード」切り替えキー
+inoremap <silent> <C-r> <C-^><C-r>=IMState('FixMode')<CR>
+
+"----------------------------------------
+" ファンクションキーの設定
+"----------------------------------------
+nnoremap <F2> :tabnew<CR>
+nnoremap <S-F2> :tabclose<CR>
+nnoremap <F3> :tabnew<CR>:E<CR>
+nnoremap <F5> :cd %:h<CR>
+nnoremap <F7> :tabprevious<CR>
+nnoremap <F8> :tabnext<CR>
+
+"----------------------------------------
+" 辞書ファイルの定義
+"----------------------------------------
+" Dictonary File for PHP
+autocmd FileType php setlocal dictionary=~/.vim/dict/php.dict
+
+" Dictonary File for javascript 
+autocmd FileType javascript setlocal dictionary=~/.vim/dict/javascript.dict
+
+"----------------------------------------
+" 2013/12/19 追加
+" インデントの設定を切り替える
+"
+" インデントの設定は、次のコーディング規約を使う
+"   Zend Framework
+"     >>字下げは空白 4 文字で行います。タブ文字を使ってはいけません。
+"   CakePHP
+"     >>インデントには単一のタブが用いられます。
+"----------------------------------------
+function! s:toggle_indent()
+    if &tabstop == 2
+        setlocal shiftwidth=4
+        setlocal tabstop=4
+        setlocal softtabstop=4
+        set expandtab
+    else
+        setlocal shiftwidth=2
+        setlocal tabstop=2
+        setlocal softtabstop=2
+        set noexpandtab
+    endif
+endfunction
+nnoremap <silent> <Space>ci :<C-u>call <SID>toggle_indent()<CR>
+
+"----------------------------------------
+" 2014/02/08 追加
+" インデントの設定を切り替える
+" HTML用
+"
+" インデントの設定は、次のコーディング規約を使う
+" Google推奨
+" HTMLのインデントは、空白文字２文字を使う
+"----------------------------------------
+function! s:toggle_html_indent()
+  setlocal shiftwidth=2
+  setlocal tabstop=2
+  setlocal softtabstop=2
+  set expandtab
+endfunction
+nnoremap <silent> <Space>htmlci :<C-u>call <SID>toggle_html_indent()<CR>
+
+
+" netrw
+" netrwは常にtree view
+"let g:netrw_liststyle =3
+"" ‘v’でファイルを開くときは右側に開く。
+"let g:netrw_altv = 1
+"" ‘o’ でファイルを開くときは下側に開く
+"let g:netrw_alto = 1
+"

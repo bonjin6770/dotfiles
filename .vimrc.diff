@@ -1,0 +1,46 @@
+"=============================================================================
+"    Description: Windows用設定
+"         Author: Shintaro Kurosawa
+"  Last Modified: 2014-05-08 09:08
+"        Version: 1.0
+"=============================================================================
+"----------------------------------------
+" Description:
+"    Modified:
+"----------------------------------------
+
+
+"----------------------------------------
+" diff/patch
+"----------------------------------------
+" diffの設定
+if has('win32') || has('win64')
+  set diffexpr=MyDiff()
+  function! MyDiff()
+    " 7.3.443 以降の変更に対応
+    silent! let saved_sxq=&shellxquote
+    silent! set shellxquote=
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    let cmd = '!diff ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+    silent execute cmd
+    silent! let &shellxquote = saved_sxq
+  endfunction
+endif
+
+" 現バッファの差分表示(変更箇所の表示)
+command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+" ファイルまたはバッファ番号を指定して差分表示。#なら裏バッファと比較
+command! -nargs=? -complete=file Diff if '<args>'=='' | browse vertical diffsplit|else| vertical diffsplit <args>|endif
+" パッチコマンド
+set patchexpr=MyPatch()
+function! MyPatch()
+   call system($VIM."\\'.'patch -o " . v:fname_out . " " . v:fname_in . " < " . v:fname_diff)
+endfunction
