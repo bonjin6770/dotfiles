@@ -51,7 +51,6 @@ NeoBundle 'vim-scripts/SingleCompile'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle "t9md/vim-quickhl"
-NeoBundle "Shougo/unite.vim"
 NeoBundle 'vim-scripts/mru.vim'
 NeoBundle "Shougo/unite-outline"
 NeoBundleLazy 'vim-jp/cpp-vim', {
