@@ -55,6 +55,9 @@ endif
 " システム設定
 source $HOME/dotfiles/.vimrc.system
 
+" vim-bootstrap
+source $HOME/dotfiles/.vimrc.vim-bootstrap
+
 " 各種スクリプトによる関数定義
 " source $HOME/dotfiles/.vimrc.script.vimrcEx
 " source $HOME/dotfiles/.vimrc.script.gcc
@@ -125,9 +128,6 @@ source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 " let g:pymode_rope_complete_on_dot = 0
 " set clipboard+=unnamed,autoselect
 
-" source $HOME/dotfiles/.vimrc.vimbootstrap
-"
-"
 augroup cpp-namespace
     autocmd!
     autocmd FileType cpp inoremap <buffer><expr>; <SID>expand_namespace()

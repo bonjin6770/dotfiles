@@ -1,0 +1,90 @@
+Commands
+
+:cd <path>
+  Open path /path
+
+<Control+w>+arrows
+  Navigate via split panels
+
+<Control>+w+w
+  Alternative navigate vim split panels
+
+,.
+  Set path working directory
+
+,w
+,x
+  Next buffer navigate
+
+,q
+,z
+  previous buffer navigate
+
+SHIFT+t
+  Create a tab
+
+TAB
+  next tab navigate
+
+SHIFT+TAB
+  previous tab navigate
+
+,e
+  Find and open files
+
+,b
+  Find file on buffer (open file)
+
+,c
+  Close active buffer (clone file)
+
+F2
+  Open tree navigate in actual opened file
+
+F3
+  Open/Close tree navigate files
+
+F4
+  List all class and method, support for python
+
+,v
+  Split vertical
+
+,h
+  Split horizontal
+
+,f
+  Search in the project
+
+,o
+  Open github file/line (website), if used git in github
+
+,sh
+  open shell terminal inside Vim
+
+gc
+  Comment or uncomment lines that {motion} movies over
+
+:cd %:h
+  Open path current file
+
+:%s/<before>/<after>/cgi
+  change stirng in current file
+
+<Control> + F
+<Control> + B
+  Scroll page
+
+<Control> + D
+<Control> + U
+  Scroll half page
+
+:marks
+  Show all marks
+
+m<string>
+  add mark <stirng>
+  [a-z] local
+  [A-Z] global
+
+

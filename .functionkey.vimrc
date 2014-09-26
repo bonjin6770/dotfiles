@@ -14,9 +14,6 @@
 "----------------------------------------
 " ヘルプ検索
 " nnoremap <F1> K
-nnoremap <F2> :tabnew<CR>
-nnoremap <S-F2> :tabclose<CR>
-nnoremap <F3> :tabnew<CR>:E<CR>
 nnoremap <F5> :Gcc<CR>
 nnoremap <F6> :source $HOME/.vimrc<CR>:source $HOME/.gvimrc<CR>
 nnoremap <F7> :tabprevious<CR>
