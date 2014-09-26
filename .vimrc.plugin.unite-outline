@@ -1,8 +1,8 @@
 " バッファのアウトラインを表示する
 "
 " アウトラインを出力したいバッファで起動
-:Unite outline
+":Unite outline
 
 " 横に split して開きたい場合
 " 幅は -winwidth= で指定
-:Unite file -vertical -winwidth=40
+" :Unite file -vertical -winwidth=40

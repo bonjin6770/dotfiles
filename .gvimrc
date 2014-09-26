@@ -1,4 +1,8 @@
-colorscheme molokai
+if has('win95') || has('win16') || has('win32') || has('win64')
+  colorscheme darkblue
+else
+  colorscheme molokai
+endif
 set guifont=Osaka-Mono:h14
 " set guifont=Ricty-Regular:h16
 
@@ -11,3 +15,13 @@ set cursorline
 set cmdheight=2
 
 source $HOME/dotfiles/.gvimrc.system
+
+"全角スペースを視覚化
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+ au BufNewFile,BufRead * match ZenkakuSpace /　/ 
+
+"特殊文字(SpecialKey)の見える化。listcharsはlcsでも設定可能。
+"trailは行末スペース。
+set list
+ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:< 
+
