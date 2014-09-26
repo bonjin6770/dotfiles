@@ -1,8 +1,4 @@
-if has('win95') || has('win16') || has('win32') || has('win64')
-  colorscheme darkblue
-else
-  colorscheme molokai
-endif
+colorscheme molokai
 set guifont=Osaka-Mono:h14
 " set guifont=Ricty-Regular:h16
 

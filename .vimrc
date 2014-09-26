@@ -1,5 +1,5 @@
 "=============================================================================
-"    Description: .vimrcサンプル設定
+"    Description: .vimrc設定
 "         Author: anonymous
 "  Last Modified: 0000-00-00 07:03
 "        Version: 0.00
@@ -120,6 +120,7 @@ source $HOME/dotfiles/.plugin.jedi_vim.vimrc
 source $HOME/dotfiles/.plugin.pymode.vimrc
 source $HOME/dotfiles/.vimrc.plugin.vim-quickhl
 source $HOME/dotfiles/.vimrc.plugin.unite-outline
+source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 
 " let g:pymode_rope_complete_on_dot = 0
 " set clipboard+=unnamed,autoselect

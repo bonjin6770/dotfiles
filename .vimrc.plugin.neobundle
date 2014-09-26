@@ -46,9 +46,13 @@ NeoBundle 'https://github.com/klen/python-mode.git'
 " NeoBundle 'https://github.com/thinca/vim-quickrun.git'
 " NeoBundle 'https://github.com/kien/ctrlp.vim.git'
 " NeoBundle 'https://github.com/freitass/todo.txt-vim.git'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'vim-scripts/SingleCompile'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle "t9md/vim-quickhl"
 NeoBundle "Shougo/unite.vim"
+NeoBundle 'vim-scripts/mru.vim'
 NeoBundle "Shougo/unite-outline"
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
@@ -57,6 +61,10 @@ NeoBundleLazy 'osyo-manga/vim-stargate', {
             \ 'autoload' : {'filetypes' : 'cpp'}
             \ }
 NeoBundle 'vim-scripts/delphi.vim'
+" FOR C++
+" NeoBundle 'Rip-Rip/clang_complete'
+" NeoBundle 'dummy/c.vim'
+NeoBundle 'vim-scripts/Switch-cpp-header-files'
 
 call neobundle#end()
 
