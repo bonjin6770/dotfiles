@@ -87,4 +87,27 @@ m<string>
   [a-z] local
   [A-Z] global
 
+:vim[grep] {pattern} {file}...
+  grep
 
+:copen
+  show result of grep (Quickfix)
+
+:ccl[ose]
+  Close result of grep (Quickfix)
+
+:cn[ext]
+  Navigate next result of grep (Quickfix)
+
+:cN[ext]
+  Navigate previous result of grep (Quickfix)
+
+:vim[grep] {pattern} **
+  Grep target is all files in current directory
+
+:ar {argument}
+  Set argument list
+
+:vim[grep] {pattern} ##
+  Grep with argument list
+  ## will be argument
