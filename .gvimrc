@@ -1,6 +1,4 @@
 colorscheme molokai
-set guifont=Osaka-Mono:h14
-" set guifont=Ricty-Regular:h16
 
 " Ctrl-x Ctrl-kではなく最初からCtrl-nで辞書から補完する
 set complete+=k
@@ -8,7 +6,7 @@ set complete+=k
 set cursorline
 
 " コマンドラインの高さ
-set cmdheight=2
+set cmdheight=1
 
 source $HOME/dotfiles/.gvimrc.system
 
@@ -21,3 +19,4 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
 set list
  set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:< 
 
+source $HOME/dotfiles/.gvimrc.font
