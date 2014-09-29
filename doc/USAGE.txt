@@ -1,4 +1,6 @@
+**********************************************
 Commands
+**********************************************
 
 :cd <path>
   Open path /path
@@ -111,3 +113,15 @@ m<string>
 :vim[grep] {pattern} ##
   Grep with argument list
   ## will be argument
+
+
+**********************************************
+Normal mode
+**********************************************
+
+*
+  Find current word in current file
+
+#
+  Reverse find current word in current file
+

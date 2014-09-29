@@ -30,15 +30,16 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'yonchu/accelerated-smooth-scroll'
-NeoBundle 'davidhalter/jedi-vim.git'
 NeoBundle 'klen/python-mode.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'vim-scripts/SingleCompile'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle "t9md/vim-quickhl"
+NeoBundle 'vim-scripts/ctags.vim'
 NeoBundle 'vim-scripts/mru.vim'
 NeoBundle "Shougo/unite-outline"
+
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
             \ }
@@ -56,7 +57,7 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'airblade/vim-gitgutter'
+" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'

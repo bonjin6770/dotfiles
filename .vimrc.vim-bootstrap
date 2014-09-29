@@ -43,7 +43,9 @@ set noswapfile
 set fileformats=unix,dos,mac
 set backspace=indent,eol,start
 set showcmd
-set shell=/bin/sh
+if('mac')
+  set shell=/bin/sh
+endif
 
 "*****************************************************************************
 "" Visual Settigns
