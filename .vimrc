@@ -149,3 +149,5 @@ augroup cpp-clangformat
     autocmd!
     autocmd FileType c,cpp,objc noremap <C-K> :pyf /path/to/clang-format.py<CR>
 augroup END
+
+imap <C-e>  <End>
