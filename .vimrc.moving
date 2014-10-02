@@ -13,10 +13,10 @@
 "inoremap  <C-a> <HOME>
 imap <C-a>  <Home>
 imap <C-e>  <End>
-imap <C-b>  <Left>
-imap <C-f>  <Right>
-imap <C-n>  <Down>
-imap <C-p>  <UP>
+" imap <C-b>  <Left>
+" imap <C-f>  <Right>
+" imap <C-n>  <Down>
+" imap <C-p>  <UP>
 "imap <ESC>< <ESC>ggi
 "imap <ESC>> <ESC>Gi
 
@@ -37,8 +37,8 @@ imap <C-p>  <UP>
 "----------------------------------------
 " spaceで次のbufferへ。back-spaceで前のbufferへ
 "----------------------------------------
-" nmap <Space><Space> ;MBEbn<CR>
-" nmap <BS><BS> ;MBEbp<CR>
+nmap <Space><Space> ;MBEbn<CR>
+nmap <BS><BS> ;MBEbp<CR>
 
 
 "----------------------------------------
@@ -54,19 +54,19 @@ imap <C-p>  <UP>
 "----------------------------------------
 " 最後に編集された位置に移動
 "----------------------------------------
-" nnoremap gb '[
-" nnoremap gp ']
+nnoremap gb '[
+nnoremap gp ']
 
 "----------------------------------------
 " 最後に変更されたテキストを選択する
 "----------------------------------------
-nnoremap gc  `[v`]
-vnoremap gc <C-u>normal gc<Enter>
-onoremap gc <C-u>normal gc<Enter>
+" nnoremap gc  `[v`]
+" vnoremap gc <C-u>normal gc<Enter>
+" onoremap gc <C-u>normal gc<Enter>
 
 " カーソル位置の単語をyankする
 nnoremap vy vawy
-
+ virtualedit
 
 " 矩形選択で自由に移動する
 set virtualedit+=block
@@ -77,8 +77,8 @@ vnoremap v $h
 
 
 " CTRL-hjklでウィンドウ移動
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
 
