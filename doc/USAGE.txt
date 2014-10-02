@@ -15,12 +15,22 @@ Commands
   Set path working directory
 
 ,w
-,x
   Next buffer navigate
 
 ,q
-,z
   previous buffer navigate
+
+,x
+  close window(:wq)
+
+,X
+  close window(:q)
+
+,z
+  close window(:q)
+
+,Z
+  close window(:q!)
 
 SHIFT+t
   Create a tab
