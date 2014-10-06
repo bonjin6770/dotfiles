@@ -21,10 +21,10 @@ Commands
   previous buffer navigate
 
 ,x
-  close window(:wq)
+  lose window(:w)
 
 ,X
-  close window(:q)
+  close window(:wq)
 
 ,z
   close window(:q)

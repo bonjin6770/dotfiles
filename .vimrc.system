@@ -76,10 +76,9 @@ endif
 filetype plugin indent on
 
 " close winodw with save
-"
-noremap <leader>x :wq<CR>
-noremap <leader>z :wq!<CR>
+noremap <leader>x :w<CR>
+noremap <leader>X :wq<CR>
 
 " close Window
-noremap <leader>X :q<CR>
+noremap <leader>z :q<CR>
 noremap <leader>Z :q!<CR>
