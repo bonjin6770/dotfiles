@@ -15,12 +15,22 @@ Commands
   Set path working directory
 
 ,w
-,x
   Next buffer navigate
 
 ,q
-,z
   previous buffer navigate
+
+,x
+  lose window(:w)
+
+,X
+  close window(:wq)
+
+,z
+  close window(:q)
+
+,Z
+  close window(:q!)
 
 SHIFT+t
   Create a tab
@@ -125,3 +135,8 @@ Normal mode
 #
   Reverse find current word in current file
 
+**********************************************
+visual mode
+**********************************************
+;bm
+  show buffer list and wait for input buffer Number
