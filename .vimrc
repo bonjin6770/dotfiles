@@ -52,11 +52,11 @@ endif
 " 基本設定
 " 環境や言語に依存しない共通事項を設定します
 
-" システム設定
-source $HOME/dotfiles/.vimrc.system
-
 " vim-bootstrap
 source $HOME/dotfiles/.vimrc.vim-bootstrap
+
+" システム設定
+source $HOME/dotfiles/.vimrc.system
 
 " 各種スクリプトによる関数定義
 " source $HOME/dotfiles/.vimrc.script.vimrcEx

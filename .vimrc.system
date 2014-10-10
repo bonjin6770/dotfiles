@@ -16,8 +16,7 @@
 "                 - カーソルキーの行末/行頭移動
 "                     ...etc
 "
-"         Author: Shintaro Kurosawa
-"  Last Modified: 2014-05-08 09:08
+"  Last Modified: 2014-10-03
 "        Version: 1.0
 "=============================================================================
 "----------------------------------------
@@ -75,3 +74,11 @@ if has('mouse')
 endif
 " pluginを使用可能にする
 filetype plugin indent on
+
+" close winodw with save
+noremap <leader>x :w<CR>
+noremap <leader>X :wq<CR>
+
+" close Window
+noremap <leader>z :q<CR>
+noremap <leader>Z :q!<CR>
