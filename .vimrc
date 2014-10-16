@@ -124,6 +124,7 @@ source $HOME/dotfiles/.plugin.pymode.vimrc
 source $HOME/dotfiles/.vimrc.plugin.vim-quickhl
 source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
+source $HOME/dotfiles/.vimrc.plugin.vim-airline
 
 " let g:pymode_rope_complete_on_dot = 0
 " set clipboard+=unnamed,autoselect
