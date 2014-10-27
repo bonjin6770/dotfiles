@@ -9,4 +9,4 @@
 "    Modified:
 "----------------------------------------
 " input number
-nmap <silent>;bm :ls<CR>:buf 
+" nmap <silent>;bm :ls<CR>:buf 
