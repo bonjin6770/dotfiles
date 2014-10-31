@@ -38,6 +38,9 @@ NeoBundle "t9md/vim-quickhl"
 NeoBundle 'vim-scripts/ctags.vim'
 NeoBundle 'vim-scripts/mru.vim'
 NeoBundle "Shougo/unite-outline"
+NeoBundle 'vim-scripts/vimdir.vim'
+NeoBundle 'vim-scripts/ReplaceWithSameIndentRegister'
+NeoBundle 'vim-scripts/ShowWhiteSpace'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
@@ -88,10 +91,10 @@ NeoBundle 'vim-scripts/c.vim'
 
 
 "" HTML Bundle
-NeoBundle 'amirh/HTML-AutoCloseTag'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'gorodinskiy/vim-coloresque'
-NeoBundle 'tpope/vim-haml'
+""NeoBundle 'amirh/HTML-AutoCloseTag'
+" NeoBundle 'hail2u/vim-css3-syntax'
+" NeoBundle 'gorodinskiy/vim-coloresque'
+" NeoBundle 'tpope/vim-haml'
 
 "" PHP Bundle
 NeoBundle 'arnaud-lb/vim-php-namespace'

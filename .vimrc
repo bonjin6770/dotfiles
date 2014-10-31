@@ -152,3 +152,21 @@ augroup cpp-clangformat
 augroup END
 
 imap <C-e>  <End>
+
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
+
+" vimgrep関連を試しに追加する
+" カーソル位置の単語でgrep
+nnoremap <S-F12> :vimgrep <cword> ./* <CR>
+
+" 検索結果の表示(他にも使いどころがある？)
+nnoremap <F12> :copen <CR>
+
+" 次の該当位置へジャンプ
+nnoremap <F8> :cnext <CR>
+
+" 前の該当位置へジャンプ
+nnoremap <F7> :cprevious <CR>
+
+nmap <C-G> :vimgrep /<C-R><C-W>/ **/*
