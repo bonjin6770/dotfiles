@@ -158,7 +158,7 @@ nnoremap <C-]> g<C-]>
 
 " vimgrep関連を試しに追加する
 " カーソル位置の単語でgrep
-nnoremap <S-F12> :vimgrep <cword> ./* <CR>
+nnoremap <S-F12> :vimgrep <C-R><C-W> ./* <CR>
 
 " 検索結果の表示(他にも使いどころがある？)
 nnoremap <F12> :copen <CR>
@@ -170,3 +170,5 @@ nnoremap <F8> :cnext <CR>
 nnoremap <F7> :cprevious <CR>
 
 nmap <C-G> :vimgrep /<C-R><C-W>/ **/*
+
+set textwidth=0
