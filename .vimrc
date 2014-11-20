@@ -158,7 +158,12 @@ nnoremap <C-]> g<C-]>
 
 " vimgrep関連を試しに追加する
 " カーソル位置の単語でgrep
-nnoremap <S-F12> :vimgrep <C-R><C-W> ./* <CR>
+nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/* <CR>
+
+" 現在開いているすべてのバッファからgrep
+" 見えているバッファからgrepする場合は、bufdoの代わりにwindoを使う
+" 実行するたびにQuickfixが追加されてしまうので、 cexpr "" を実行すること
+nnoremap <S-F11> :bufdo vimgrepadd /<C-R><C-K>/j **/* %<CR>
 
 " 検索結果の表示(他にも使いどころがある？)
 nnoremap <F12> :copen <CR>
@@ -169,7 +174,8 @@ nnoremap <F8> :cnext <CR>
 " 前の該当位置へジャンプ
 nnoremap <F7> :cprevious <CR>
 
-nmap <C-G> :vimgrep /<C-R><C-W>/ **/*
+" cwでQuickfixを開く
+nmap <C-G> :vimgrep /<C-R><C-W>/j **/*
 
 set textwidth=0
 
@@ -179,3 +185,7 @@ set grepprg=internal
 " CUI上での色指定
 colorscheme darkblue
 
+" Quickfixを常に開く
+autocmd QuickFixCmdPost *grep* cwindow
+
+nmap bb :ls<CR>:buf
