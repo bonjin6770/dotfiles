@@ -172,3 +172,5 @@ nnoremap <F7> :cprevious <CR>
 nmap <C-G> :vimgrep /<C-R><C-W>/ **/*
 
 set textwidth=0
+
+set grepprg=internal
