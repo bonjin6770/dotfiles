@@ -120,7 +120,7 @@ m<string>
 :ar {argument}
   Set argument list
 
-:vim[grep] {pattern} ##
+:vimgrep {pattern} ##
   Grep with argument list
   ## will be argument
 
