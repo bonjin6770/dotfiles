@@ -41,6 +41,7 @@ NeoBundle "Shougo/unite-outline"
 NeoBundle 'vim-scripts/vimdir.vim'
 NeoBundle 'vim-scripts/ReplaceWithSameIndentRegister'
 NeoBundle 'vim-scripts/ShowWhiteSpace'
+NeoBundle 'vim-scripts/exjumplist'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}

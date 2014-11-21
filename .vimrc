@@ -188,4 +188,11 @@ colorscheme darkblue
 " Quickfixを常に開く
 autocmd QuickFixCmdPost *grep* cwindow
 
-nmap bb :ls<CR>:buf
+nmap <S-F5> :ls<CR>:buf
+
+
+" for exjumplist
+" nmap <C-M-i>  <Plug>(exjumplist-go-last)
+" nmap <C-M-o>  <Plug>(exjumplist-go-first)
+nmap <S-C-F8>  <Plug>(exjumplist-next-buffer)
+nmap <S-C-F7>  <Plug>(exjumplist-previous-buffer)
