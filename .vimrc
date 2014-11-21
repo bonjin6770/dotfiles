@@ -107,7 +107,7 @@ endif
 source $HOME/dotfiles/.vimrc.local
 
 " ファンクションキー設定
-source $HOME/dotfiles/.functionkey.vimrc
+source $HOME/dotfiles/.vimrc.functionKeyMap
 
 " key map
 source $HOME/dotfiles/.vimrc.keymap
@@ -190,9 +190,3 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 nmap <S-F5> :ls<CR>:buf
 
-
-" for exjumplist
-" nmap <C-M-i>  <Plug>(exjumplist-go-last)
-" nmap <C-M-o>  <Plug>(exjumplist-go-first)
-nmap <S-C-F8>  <Plug>(exjumplist-next-buffer)
-nmap <S-C-F7>  <Plug>(exjumplist-previous-buffer)
