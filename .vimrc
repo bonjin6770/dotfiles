@@ -107,7 +107,7 @@ endif
 source $HOME/dotfiles/.vimrc.local
 
 " ファンクションキー設定
-source $HOME/dotfiles/.functionkey.vimrc
+source $HOME/dotfiles/.vimrc.functionKeyMap
 
 " key map
 source $HOME/dotfiles/.vimrc.keymap
@@ -152,3 +152,41 @@ augroup cpp-clangformat
 augroup END
 
 imap <C-e>  <End>
+
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
+
+" vimgrep関連を試しに追加する
+" カーソル位置の単語でgrep
+nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/* <CR>
+
+" 現在開いているすべてのバッファからgrep
+" 見えているバッファからgrepする場合は、bufdoの代わりにwindoを使う
+" 実行するたびにQuickfixが追加されてしまうので、 cexpr "" を実行すること
+nnoremap <S-F11> :bufdo vimgrepadd /<C-R><C-K>/j **/* %<CR>
+
+" 検索結果の表示(他にも使いどころがある？)
+nnoremap <F12> :copen <CR>
+
+" 次の該当位置へジャンプ
+nnoremap <F8> :cnext <CR>
+
+" 前の該当位置へジャンプ
+nnoremap <F7> :cprevious <CR>
+
+" cwでQuickfixを開く
+nmap <C-G> :vimgrep /<C-R><C-W>/j **/*
+
+set textwidth=0
+
+" 既定のvimgrepを内部grepにする
+set grepprg=internal
+
+" CUI上での色指定
+colorscheme darkblue
+
+" Quickfixを常に開く
+autocmd QuickFixCmdPost *grep* cwindow
+
+nmap <S-F5> :ls<CR>:buf
+
