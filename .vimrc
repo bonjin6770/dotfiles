@@ -151,3 +151,5 @@ augroup cpp-clangformat
 augroup END
 
 imap <C-e>  <End>
+
+set imdisable

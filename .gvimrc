@@ -20,3 +20,7 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue
 "trailは行末スペース。
 set list
  set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+
+if has('mac')
+  set imdisable
+endif

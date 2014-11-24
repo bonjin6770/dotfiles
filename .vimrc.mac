@@ -193,9 +193,9 @@ endif
 " iconvが使用可能の場合、カーソル上の文字コードをエンコードに応じた表示にするFencB()を使用
 """"""""""""""""""""""""""""""
 if has('iconv')
-  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=[0x%{FencB()}]\ (%v,%l)/%L%8P\ 
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=[0x%{FencB()}]\ (%v,%l)/%L%8P\
 else
-  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v,%l)/%L%8P\ 
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v,%l)/%L%8P\
 endif
 
 " FencB() : カーソル上の文字コードをエンコードに応じた表示にする
@@ -474,7 +474,7 @@ nnoremap <F8> :tabnext<CR>
 " Dictonary File for PHP
 autocmd FileType php setlocal dictionary=~/.vim/dict/php.dict
 
-" Dictonary File for javascript 
+" Dictonary File for javascript
 autocmd FileType javascript setlocal dictionary=~/.vim/dict/javascript.dict
 
 "----------------------------------------
@@ -527,4 +527,5 @@ nnoremap <silent> <Space>htmlci :<C-u>call <SID>toggle_html_indent()<CR>
 "let g:netrw_altv = 1
 "" ‘o’ でファイルを開くときは下側に開く
 "let g:netrw_alto = 1
-"
+
+set imdisable
