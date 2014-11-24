@@ -290,7 +290,6 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 
-" syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
 
 " vim-airline
@@ -305,10 +304,6 @@ let g:tagbar_autofocus = 1
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
-
-
-
-
 
 
 let g:javascript_enable_domhtmlcss = 1

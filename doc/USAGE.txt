@@ -120,10 +120,16 @@ m<string>
 :ar {argument}
   Set argument list
 
-:vim[grep] {pattern} ##
+:vimgrep {pattern} ##
   Grep with argument list
   ## will be argument
 
+
+:!ctags -R
+  Create tag file
+
+:tags
+  show tag list
 
 **********************************************
 Normal mode
@@ -134,6 +140,15 @@ Normal mode
 
 #
   Reverse find current word in current file
+
+C-]
+  tag jump
+
+C-t
+  tag jump back
+
+C-w,}
+  preview tag list
 
 **********************************************
 visual mode
