@@ -42,6 +42,7 @@ NeoBundle 'vim-scripts/vimdir.vim'
 NeoBundle 'vim-scripts/ReplaceWithSameIndentRegister'
 NeoBundle 'vim-scripts/ShowWhiteSpace'
 NeoBundle 'vim-scripts/exjumplist'
+NeoBundle 'vim-scripts/YankRing.vim'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
