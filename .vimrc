@@ -125,6 +125,7 @@ source $HOME/dotfiles/.vimrc.plugin.vim-quickhl
 source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 source $HOME/dotfiles/.vimrc.plugin.vim-airline
+source $HOME/dotfiles/.vimrc.plugin.YankRing
 
 " let g:pymode_rope_complete_on_dot = 0
 " set clipboard+=unnamed,autoselect
@@ -190,3 +191,144 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 nmap <S-F5> :ls<CR>:buf
 
+
+" neocomplcache
+" neocomplcacheを起動時に有効化する
+" let g:neocomplcache_enable_at_startup = 1
+" " 大文字が入力されるまで大文字小文字の区別を無視する
+" let g:neocomplcache_enable_smart_case = 1
+" " _(アンダーバー)区切りの補完を有効化します
+" let g:neocomplcache_enable_underbar_completion = 1
+" " シンタックスをキャッシュするときの最小文字長を3にしています。
+" let g:neocomplcache_min_syntax_length = 3
+" " ディクショナリ定義
+" let g:neocomplcache_dictionary_filetype_lists = {
+"     \ 'default' : '',
+"     \ 'vimshell' : $HOME.'/.vimshell_hist',
+"     \ 'scheme' : $HOME.'/.gosh_completions',
+"     \ 'php' : $HOME . '/.vim/dict/php.dict'
+"         \ }
+" " Define keyword.
+" if !exists('g:neocomplcache_keyword_patterns')
+"     let g:neocomplcache_keyword_patterns = {}
+" endif
+" " キーワードパターンの設定
+" let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+" " 補完ウィンドウの設定
+" set completeopt=menuone
+" " ポップアップメニューで表示される候補の数
+" let g:neocomplcache_max_list = 20
+" "tabで補完候補の選択を行う
+" "inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+" " inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+" " スニペットを展開する。スニペットが関係しないところでは行末まで削除
+" imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+" smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+" " 前回行われた補完をキャンセルします
+" inoremap <expr><C-g> neocomplcache#undo_completion()
+" " 補完候補のなかから、共通する部分を補完します
+" inoremap <expr><C-l> neocomplcache#complete_common_string()
+" " <C-h>や<BS>を押したときに確実にポップアップを削除します
+" inoremap <expr><C-h> neocomplcache#smart_close_popup().”\<C-h>
+" " 現在選択している候補を確定します
+" inoremap <expr><C-y> neocomplcache#close_popup()
+" " 現在選択している候補をキャンセルし、ポップアップを閉じます
+" inoremap <expr><C-e> neocomplcache#cancel_popup()
+" " 改行で補完ウィンドウを閉じる
+" inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+" " 手動でneocomplcacheを起動する
+" inoremap <expr><C-n> neocomplcache#start_manual_complete()
+" " 自動でneocomplcacheが起動するのをやめる
+" let g:neocomplcache_disable_auto_complete = 1
+" neocomplcache END"
+
+" " 検索時に大/小文字を区別しない
+" set ignorecase
+" " 検索時に大文字を含んでいたら大/小を区別
+" set smartcase
+" " 検索をファイルの先頭へループしない
+" " set nowrapscan
+" " 検索文字列入力時に順次対象文字列にヒットさせる
+" set incsearch
+" " 検索結果文字列のハイライトを有効にする
+" set hlsearch
+"
+" " -------------------------------------------------------------------
+" " vim-anzu関連 {{{
+" "
+" " キーマップ設定
+" nmap n <Plug>(anzu-jump-n)zz
+" nmap N <Plug>(anzu-N)zz
+" nmap * <Plug>(anzu-star)
+" nmap # <Plug>(anzu-sharp)
+" " ESC2回押しで検索ハイライトを消去
+" nmap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
+"   \ <Plug>(anzu-clear-search-status)
+"   \ <Plug>(quickhl-manual-reset)
+" " format = (該当数/全体数)
+" let g:anzu_status_format = "(%i/%l)"
+" "}}}
+"
+"
+" " -------------------------------------------------------------------
+" " vim-quickhl関連 {{{
+" "
+" nmap <Space>m <Plug>(quickhl-manual-this)
+" xmap <Space>m <Plug>(quickhl-manual-this)
+" nmap <Space>M <Plug>(quickhl-manual-reset)
+" xmap <Space>M <Plug>(quickhl-manual-reset)
+" "}}}
+
+" http://d.hatena.ne.jp/osyo-manga/20140121/1390309901
+" Vim でカーソル下の単語を移動するたびにハイライトするCommentsAdd Star
+"" 1 が設定されていれば有効になる
+" let g:enable_highlight_cursor_word = 0
+let g:enable_highlight_cursor_word = 1
+
+augroup highlight-cursor-word
+    autocmd!
+    autocmd CursorMoved * call s:hl_cword()
+    " カーソル移動が重くなったと感じるようであれば
+    " CursorMoved ではなくて
+    " CursorHold を使用する
+"     autocmd CursorHold * call s:hl_cword()
+    " 単語のハイライト設定
+    autocmd ColorScheme * highlight CursorWord guifg=Red
+    " アンダーラインでハイライトを行う場合
+"     autocmd ColorScheme * highlight CursorWord gui=underline guifg=NONE
+    autocmd BufLeave * call s:hl_clear()
+    autocmd WinLeave * call s:hl_clear()
+    autocmd InsertEnter * call s:hl_clear()
+augroup END
+
+
+function! s:hl_clear()
+    if exists("b:highlight_cursor_word_id") && exists("b:highlight_cursor_word")
+        silent! call matchdelete(b:highlight_cursor_word_id)
+        unlet b:highlight_cursor_word_id
+        unlet b:highlight_cursor_word
+    endif
+endfunction
+
+function! s:hl_cword()
+    let word = expand("<cword>")
+    if    word == ""
+    return
+    endif
+    if get(b:, "highlight_cursor_word", "") ==# word
+        return
+    endif
+
+    call s:hl_clear()
+    if !g:enable_highlight_cursor_word
+        return
+    endif
+
+    if !empty(filter(split(word, '\zs'), "strlen(v:val) > 1"))
+        return
+    endif
+
+    let pattern = printf("\\<%s\\>", expand("<cword>"))
+    silent! let b:highlight_cursor_word_id = matchadd("CursorWord", pattern)
+    let b:highlight_cursor_word = word
+endfunction
