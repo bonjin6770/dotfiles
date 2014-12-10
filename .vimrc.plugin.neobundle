@@ -44,7 +44,8 @@ NeoBundle 'vim-scripts/ShowWhiteSpace'
 NeoBundle 'vim-scripts/exjumplist'
 NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'osyo-manga/vim-anzu'
-NeoBundle 'thinca/vim-visualstar '
+NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'vim-scripts/bufferlist.vim'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}

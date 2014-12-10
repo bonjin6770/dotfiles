@@ -13,7 +13,8 @@
 " <F2>
 " <F3>
 " <F4>
-" <F5>
+" <F5> bufferlist.vim
+map <silent> <F5> :call BufferList()<CR>
 " <F6> .vimrc等すべて再読み込み
 nnoremap <F6> :source $HOME/.vimrc<CR>:source $HOME/.gvimrc<CR>
 " <F7>
