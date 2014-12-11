@@ -46,6 +46,9 @@ NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'vim-scripts/bufferlist.vim'
+NeoBundle 'wesleyche/SrcExpl'
+NeoBundle 'taglist.vim'
+" NeoBundle 'Source-Explorer-srcexpl.vim'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}

@@ -332,3 +332,29 @@ function! s:hl_cword()
     silent! let b:highlight_cursor_word_id = matchadd("CursorWord", pattern)
     let b:highlight_cursor_word = word
 endfunction
+
+" ctrlp.vim
+" let g:ctrlp_map = '<s-c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+
+
+" cscope
+if has("cscope")
+  set csprg=/usr/local/bin/cscope
+  set csto=0
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+  " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+  endif
+  set csverb
+  set cscopequickfix=s-,c-,d-,i-,t-,e-
+endif
+
+" SrcExpl
+let g:SrcExpl_RefreshMapKey = "<Space>"
+let g:SrcExpl_GoBackMapKey  = "<C-b>"
