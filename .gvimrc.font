@@ -20,7 +20,7 @@ if has('win32')
 elseif has('gui_macvim')
   " set guifont=Osaka-Mono:h16
   " set guifont=Osaka-Mono:h14
-  set guifont=Ricty:h18
+  set guifont=Ricty:h14
 elseif has('mac')
   " set guifont=Osaka－等幅:h16
   " set guifont=Ricty Regular:h16
