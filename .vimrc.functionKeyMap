@@ -15,7 +15,7 @@
 " <F4>
 " <F5> bufferlist.vim
 map <silent> <F5> :call BufferList()<CR>
-" <F6>
+" <F6> SrcExpl.vim
 nnoremap <F6> :SrcExplToggle<CR>
 " <F7>
 " <F8>
