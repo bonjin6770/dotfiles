@@ -1,0 +1,47 @@
+"=============================================================================
+"    Description: .vimrc.init
+"         Author: bonjin6770(twitter:bonjin6770)
+"=============================================================================
+set nocompatible
+set encoding=utf-8
+"scriptencoding cp932
+scriptencoding unix
+" scriptencodingと、このファイルのエンコーディングが一致するよう注意！
+" scriptencodingは、vimの内部エンコーディングと同じものを推奨します。
+" 改行コードは set fileformat=unix に設定するとunixでも使えます。
+
+" Windowsで内部エンコーディングを cp932以外にしていて、
+" 環境変数に日本語を含む値を設定したい場合は Let を使用します。
+" Letは vimrc(オールインワンパッケージの場合)と encode.vim で定義されます。
+" Let $HOGE=$USERPROFILE.'/ほげ'
+
+"----------------------------------------
+" ユーザーランタイムパス設定
+"----------------------------------------
+" Windows, unixでのruntimepathの違いを吸収するためのもの。
+" $MY_VIMRUNTIMEはユーザーランタイムディレクトリを示す。
+" :echo $MY_VIMRUNTIMEで実際のパスを確認できます。
+if isdirectory($HOME . '/.vim')
+  let $MY_VIMRUNTIME = $HOME.'/.vim'
+elseif isdirectory($HOME . '\vimfiles')
+  let $MY_VIMRUNTIME = $HOME.'\vimfiles'
+elseif isdirectory($VIM . '\vimfiles')
+  let $MY_VIMRUNTIME = $VIM.'\vimfiles'
+endif
+
+" ランタイムパスを通す必要のあるプラグインを使用する場合、
+" $MY_VIMRUNTIMEを使用すると Windows/Linuxで切り分ける必要が無くなります。
+" 例) vimfiles/qfixapp (Linuxでは~/.vim/qfixapp)にランタイムパスを通す場合
+" set runtimepath+=$MY_VIMRUNTIME/qfixapp
+
+"----------------------------------------
+" 内部エンコーディング指定
+"----------------------------------------
+" 内部エンコーディングのUTF-8化と文字コードの自動認識設定をencode.vimで行う。
+" オールインワンパッケージの場合 vimrcで設定されます。
+" エンコーディング指定や文字コードの自動認識設定が適切に設定されている場合、
+" 次行の encode.vim読込部分はコメントアウトして下さい。
+" silent! source $MY_VIMRUNTIME/pluginjp/encode.vim
+" scriptencodingと異なる内部エンコーディングに変更する場合、
+" 変更後にもscriptencodingを指定しておくと問題が起きにくくなります。
+" scriptencoding cp932
