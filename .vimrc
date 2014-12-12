@@ -1,8 +1,6 @@
 "=============================================================================
-"    Description: .vimrc設定
-"         Author: anonymous
-"  Last Modified: 0000-00-00 07:03
-"        Version: 0.00
+"    Description: .vimrc
+"         Author: bonjin6770(twitter:bonjin6770)
 "=============================================================================
 set nocompatible
 set encoding=utf-8
@@ -355,6 +353,45 @@ if has("cscope")
   set cscopequickfix=s-,c-,d-,i-,t-,e-
 endif
 
-" SrcExpl
+" SrcExpl360
 let g:SrcExpl_RefreshMapKey = "<Space>"
 let g:SrcExpl_GoBackMapKey  = "<C-b>"
+
+" NERDCommenter
+let NERDSpaceDelims = 1
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
+
+" 目指す構造化！
+" " 初期化
+" source ~/dotfiles/vimrc/.vimrc.init
+"
+" " NeoBundle設定
+" source ~/dotfiles/vimrc/.vimrc.bundle
+"
+" " 基本設定
+" source ~/dotfiles/vimrc/.vimrc.basic
+"
+" " 文字コード設定
+" source ~/dotfiles/vimrc/.vimrc.encoding
+"
+" " 表示設定
+" source ~/dotfiles/vimrc/.vimrc.appearance
+"
+" " カラースキーマ設定
+" source ~/dotfiles/vimrc/.vimrc.colorscheme
+"
+" " インデント設定
+" source ~/dotfiles/vimrc/.vimrc.indent
+"
+" " 検索設定
+" source ~/dotfiles/vimrc/.vimrc.search
+"
+" " キーマッピング設定
+" source ~/dotfiles/vimrc/.vimrc.keymap
+"
+" " ファイルタイプ設定
+" source ~/dotfiles/vimrc/.vimrc.filetype
+"360
+" " プラグイン設定
+" source ~/dotfiles/vimrc/.vimrc.plugin
