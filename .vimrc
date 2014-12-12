@@ -11,10 +11,6 @@ source $HOME/dotfiles/.vimrc.vim-bootstrap
 " システム設定
 source $HOME/dotfiles/.vimrc.system
 
-" 各種スクリプトによる関数定義
-" source $HOME/dotfiles/.vimrc.script.vimrcEx
-" source $HOME/dotfiles/.vimrc.script.gcc
-
 " 移動関連
 source $HOME/dotfiles/.vimrc.moving
 
