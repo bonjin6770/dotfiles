@@ -52,17 +52,8 @@ if has('mac')
   " source $HOME/dotfiles/.vimrc.mac
 endif
 
-" ローカル環境
-source $HOME/dotfiles/.vimrc.local
-
-" ファンクションキー設定
-source $HOME/dotfiles/.vimrc.functionKeyMap
-
 " key map
 source $HOME/dotfiles/.vimrc.keymap
-
-" 勉強用
-" source $HOME/dotfiles/.vimrc.practice
 
 " プラグイン設定
 source $HOME/dotfiles/.vimrc.plugin.neobundle
@@ -110,22 +101,6 @@ nnoremap <C-]> g<C-]>
 " カーソル位置の単語でgrep
 nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/* <CR>
 
-" 現在開いているすべてのバッファからgrep
-" 見えているバッファからgrepする場合は、bufdoの代わりにwindoを使う
-" 実行するたびにQuickfixが追加されてしまうので、 cexpr "" を実行すること
-nnoremap <S-F11> :bufdo vimgrepadd /<C-R><C-K>/j **/* %<CR>
-
-" 検索結果の表示(他にも使いどころがある？)
-nnoremap <F12> :copen <CR>
-
-" 次の該当位置へジャンプ
-nnoremap <F8> :cnext <CR>
-
-" 前の該当位置へジャンプ
-nnoremap <F7> :cprevious <CR>
-
-" cwでQuickfixを開く
-nmap <C-G> :vimgrep /<C-R><C-W>/j **/*
 
 set textwidth=0
 
