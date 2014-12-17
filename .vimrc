@@ -53,7 +53,7 @@ if has('mac')
 endif
 
 " key map
-source $HOME/dotfiles/.vimrc.keymap
+source ~/dotfiles/vimrc/.vimrc.keymap
 
 " プラグイン設定
 source $HOME/dotfiles/.vimrc.plugin.neobundle

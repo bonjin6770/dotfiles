@@ -11,6 +11,16 @@
 " Map leader to ,
 let mapleader=','
 
+"=============================================================================
+" The prefix key.
+"=============================================================================
+nnoremap [Tag]<Nop>
+nmap    t [Tag]
+
+nnoremap [Tag]t <C-]>
+nnoremap <silent> [Tag]n :<C-u>tag<CR>
+nnoremap <silent> [Tag]p :<C-u>pop<CR>
+nnoremap <silent> [Tag]l :<C-u>tags<CR>
 
 "=============================================================================
 " C-[a~z]
