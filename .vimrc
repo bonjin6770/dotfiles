@@ -115,7 +115,6 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 nmap <S-F5> :ls<CR>:buf
 
-
 " neocomplcache
 " neocomplcacheを起動時に有効化する
 " let g:neocomplcache_enable_at_startup = 1

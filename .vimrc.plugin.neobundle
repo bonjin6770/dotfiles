@@ -50,6 +50,7 @@ NeoBundle 'wesleyche/SrcExpl'
 NeoBundle 'taglist.vim'
 " NeoBundle 'Source-Explorer-srcexpl.vim'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'vim-scripts/FavEx'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
