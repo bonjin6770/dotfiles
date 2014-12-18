@@ -10,6 +10,7 @@
 "*****************************************************************************
 " Map leader to ,
 " let mapleader=','
+let mapleader = "\<Space>"
 
 "" Close buffer
 noremap <leader>c :bd<CR>
