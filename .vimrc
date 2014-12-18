@@ -55,6 +55,12 @@ endif
 " key map
 source ~/dotfiles/vimrc/.vimrc.keymap
 
+let g:sonictemplate_vim_template_dir = '~/dotfiles/template'
+" let g:sonictemplate_vim_template_dir = [
+" \ '$HOME/.vim/template',
+" \ '$HOME/dotfiles/template'
+" \]
+
 " プラグイン設定
 source $HOME/dotfiles/.vimrc.plugin.neobundle
 source $HOME/dotfiles/.plugin.neocomplete.vimrc
@@ -66,6 +72,8 @@ source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 source $HOME/dotfiles/.vimrc.plugin.vim-airline
 source $HOME/dotfiles/.vimrc.plugin.YankRing
+" テンプレートのテスト
+let g:sonictemplate_vim_template_dir = '$HOME/dotfiles/template'
 
 " let g:pymode_rope_complete_on_dot = 0
 " set clipboard+=unnamed,autoselect
@@ -320,3 +328,4 @@ vmap ,, <Plug>NERDCommenterToggle
 "360
 " " プラグイン設定
 " source ~/dotfiles/vimrc/.vimrc.plugin
+

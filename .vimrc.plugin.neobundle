@@ -51,7 +51,7 @@ NeoBundle 'taglist.vim'
 " NeoBundle 'Source-Explorer-srcexpl.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'vim-scripts/FavEx'
-NeoBundle 'thinca/vim-template'
+NeoBundle 'mattn/sonictemplate-vim'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
