@@ -71,7 +71,7 @@ nnoremap <F12> :copen <CR>
 " ------------------------------------------
 " <S-F1>
 " <S-F2> Template
-nnoremap <S-F2> :Template
+nnoremap <S-F2> :Template<Space>
 " <S-F3>
 " <S-F4>
 " <S-F5>
