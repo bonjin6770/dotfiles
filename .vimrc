@@ -103,7 +103,7 @@ augroup END
 imap <C-e>  <End>
 
 " tagsジャンプの時に複数ある時は一覧表示
-nnoremap <C-]> g<C-]>
+" nnoremap <C-]> g<C-]>
 
 " vimgrep関連を試しに追加する
 " カーソル位置の単語でgrep
