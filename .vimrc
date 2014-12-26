@@ -11,10 +11,6 @@ source $HOME/dotfiles/.vimrc.vim-bootstrap
 " システム設定
 source $HOME/dotfiles/.vimrc.system
 
-" 各種スクリプトによる関数定義
-" source $HOME/dotfiles/.vimrc.script.vimrcEx
-" source $HOME/dotfiles/.vimrc.script.gcc
-
 " 移動関連
 source $HOME/dotfiles/.vimrc.moving
 
@@ -56,17 +52,14 @@ if has('mac')
   " source $HOME/dotfiles/.vimrc.mac
 endif
 
-" ローカル環境
-source $HOME/dotfiles/.vimrc.local
-
-" ファンクションキー設定
-source $HOME/dotfiles/.vimrc.functionKeyMap
-
 " key map
-source $HOME/dotfiles/.vimrc.keymap
+source ~/dotfiles/vimrc/.vimrc.keymap
 
-" 勉強用
-" source $HOME/dotfiles/.vimrc.practice
+let g:sonictemplate_vim_template_dir = '~/dotfiles/template'
+" let g:sonictemplate_vim_template_dir = [
+" \ '$HOME/.vim/template',
+" \ '$HOME/dotfiles/template'
+" \]
 
 " プラグイン設定
 source $HOME/dotfiles/.vimrc.plugin.neobundle
@@ -79,6 +72,9 @@ source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 source $HOME/dotfiles/.vimrc.plugin.vim-airline
 source $HOME/dotfiles/.vimrc.plugin.YankRing
+" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
+" テンプレートのテスト
+let g:sonictemplate_vim_template_dir = '$HOME/dotfiles/template'
 
 " let g:pymode_rope_complete_on_dot = 0
 " set clipboard+=unnamed,autoselect
@@ -108,28 +104,9 @@ augroup END
 imap <C-e>  <End>
 
 " tagsジャンプの時に複数ある時は一覧表示
-nnoremap <C-]> g<C-]>
+" nnoremap <C-]> g<C-]>
 
-" vimgrep関連を試しに追加する
-" カーソル位置の単語でgrep
-nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/* <CR>
 
-" 現在開いているすべてのバッファからgrep
-" 見えているバッファからgrepする場合は、bufdoの代わりにwindoを使う
-" 実行するたびにQuickfixが追加されてしまうので、 cexpr "" を実行すること
-nnoremap <S-F11> :bufdo vimgrepadd /<C-R><C-K>/j **/* %<CR>
-
-" 検索結果の表示(他にも使いどころがある？)
-nnoremap <F12> :copen <CR>
-
-" 次の該当位置へジャンプ
-nnoremap <F8> :cnext <CR>
-
-" 前の該当位置へジャンプ
-nnoremap <F7> :cprevious <CR>
-
-" cwでQuickfixを開く
-nmap <C-G> :vimgrep /<C-R><C-W>/j **/*
 
 set textwidth=0
 
@@ -143,7 +120,6 @@ colorscheme darkblue
 autocmd QuickFixCmdPost *grep* cwindow
 
 nmap <S-F5> :ls<CR>:buf
-
 
 " neocomplcache
 " neocomplcacheを起動時に有効化する
@@ -350,3 +326,4 @@ vmap ,, <Plug>NERDCommenterToggle
 "360
 " " プラグイン設定
 " source ~/dotfiles/vimrc/.vimrc.plugin
+

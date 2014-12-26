@@ -1,0 +1,14 @@
+" バックアップを有効にするかどうか。このスクリプトを使うためには有効にしなければならない。Vimの基本設定の1つ。
+:set backup
+" バックアップを保存するディレクトリ。Vimの基本設定の1つ。
+set backupdir=~/temp
+:set patchmode=.clean
+" バージョンの管理をするファイルの種類
+:let savevers_types = "*"
+" バージョン管理ファイルを保存するディレクトリ。
+:let savevers_dirs = &backupdir
+" 各バージョンとのdiffを表示する時に、ウィンドウサイズを変化させるかどうか。
+:let versdiff_no_resize=1
+:nmap <silent> <S-C-F5> :VersDiff -<cr>
+:nmap <silent> <S-C-F6> :VersDiff +<cr>
+:nmap <silent> <S-C-F8> :VersDiff -c<cr>
