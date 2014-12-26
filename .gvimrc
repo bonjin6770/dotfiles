@@ -19,4 +19,8 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue
 "特殊文字(SpecialKey)の見える化。listcharsはlcsでも設定可能。
 "trailは行末スペース。
 set list
-set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+
+if has('mac')
+  set imdisable
+endif

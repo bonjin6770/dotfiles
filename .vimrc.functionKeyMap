@@ -13,9 +13,10 @@
 " <F2>
 " <F3>
 " <F4>
-" <F5>
-" <F6> .vimrc等すべて再読み込み
-nnoremap <F6> :source $HOME/.vimrc<CR>:source $HOME/.gvimrc<CR>
+" <F5> bufferlist.vim
+map <silent> <F5> :call BufferList()<CR>
+" <F6> SrcExpl.vim
+nnoremap <F6> :SrcExplToggle<CR>
 " <F7>
 " <F8>
 " <F9> 現在開いているvimスクリプトファイルを実行
