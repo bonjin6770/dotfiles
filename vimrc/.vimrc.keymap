@@ -43,7 +43,8 @@ nnoremap <silent> [Tag]l :<C-u>tags<CR>
 " C-[a~z]
 "=============================================================================
 " <C-G> grep
-nmap <C-G> :vimgrep /<C-R><C-W>/j **/*
+nmap <C-G> :vimgrep /<C-R><C-W>/j %
+
 
 "=============================================================================
 " Function Key map
@@ -94,7 +95,9 @@ nnoremap <S-F2> :Template<Space>
 "         見えているバッファからgrepする場合は、bufdoの代わりにwindoを使う
 "         実行するたびにQuickfixが追加されてしまうので、 cexpr "" を実行すること
 nnoremap <S-F11> :bufdo vimgrepadd /<C-R><C-K>/j **/* %<CR>
-" <S-F12>
+" <S-F12> カーソル位置の単語でgrep
+nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/*
+
 " ------------------------------------------
 " C-F[1~12]
 " ------------------------------------------

@@ -72,6 +72,7 @@ source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 source $HOME/dotfiles/.vimrc.plugin.vim-airline
 source $HOME/dotfiles/.vimrc.plugin.YankRing
+" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
 " テンプレートのテスト
 let g:sonictemplate_vim_template_dir = '$HOME/dotfiles/template'
 
@@ -105,9 +106,6 @@ imap <C-e>  <End>
 " tagsジャンプの時に複数ある時は一覧表示
 " nnoremap <C-]> g<C-]>
 
-" vimgrep関連を試しに追加する
-" カーソル位置の単語でgrep
-nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/* <CR>
 
 
 set textwidth=0
