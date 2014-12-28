@@ -28,6 +28,9 @@ noremap <leader>y viy
 "<Leader><Leader>で変更があれば保存
 noremap <Leader><Leader> :up<CR>
 
+" ScrExpl
+nnoremap <Leader>o :SrcExplToggle<CR>
+
 "=============================================================================
 " The prefix key.
 "=============================================================================
