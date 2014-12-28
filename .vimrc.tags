@@ -20,3 +20,9 @@
 "   "autochdirが存在しないが、カレントディレクトリを移動したい場合
 "   au BufEnter * execute ":silent! lcd " . escape(expand("%:p:h"), ' ')
 " endif
+
+" tagsファイルを探すディレクトリを、対象ファイルのあるディレクトリからの相対位置からにする
+set tags=./tags;
+
+" tagsファイルを探すディレクトリを、カレントディレクトリからにすあ
+" set tags=tags;
