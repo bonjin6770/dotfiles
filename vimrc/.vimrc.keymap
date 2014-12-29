@@ -12,12 +12,17 @@
 " let mapleader=','
 let mapleader = "\<Space>"
 
-"" Close buffer
-noremap <leader>c :bd<CR>
+"
+" buffer
+noremap <leader>n :bn<CR>
+noremap <leader>p :bp<CR>
+noremap <leader>d :bd<CR>
+
 " カーソル位置の単語選択
 noremap <leader>e viw
 " カーソル位置の単語ヤンク
-noremap <leader>y viy
+" noremap <leader>y viy
+
 " ダブルクォートの中身を選択
 " noremap <leader>e vi"
 " va" → a : a : ダブルクォートを含んだ検索
