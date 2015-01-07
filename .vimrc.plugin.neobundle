@@ -56,6 +56,10 @@ NeoBundle 'vim-scripts/tagexplorer.vim'
 NeoBundle 'vim-scripts/Changed'
 NeoBundle 'vim-scripts/closetag.vim'
 NeoBundle "osyo-manga/vim-milfeulle"
+NeoBundle "mhinz/vim-startify"
+NeoBundle "terryma/vim-expand-region"
+NeoBundle "kana/vim-textobj-line"
+NeoBundle "kana/vim-textobj-entire"
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
