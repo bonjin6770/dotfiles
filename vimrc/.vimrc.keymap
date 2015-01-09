@@ -12,7 +12,6 @@
 " let mapleader=','
 let mapleader = "\<Space>"
 
-"
 " buffer
 noremap <leader>n :bn<CR>
 noremap <leader>p :bp<CR>
@@ -34,12 +33,12 @@ noremap <leader>e viw
 noremap <Leader><Leader> :up<CR>
 
 " ScrExpl
-nnoremap <Leader>o :SrcExplToggle<CR>
+" nnoremap <Leader>o :SrcExplToggle<CR>
 
 " osyo-manga/vim-milfeulle
 " 履歴を移動するマッピング
-nmap <Leader>o <Plug>(milfeulle-prev)
-nmap <Leader>i <Plug>(milfeulle-next)
+nmap <Leader>h <Plug>(milfeulle-prev)
+nmap <Leader>l <Plug>(milfeulle-next)
 
 "=============================================================================
 " The prefix key.

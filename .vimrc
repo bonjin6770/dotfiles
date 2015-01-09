@@ -73,6 +73,7 @@ source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 source $HOME/dotfiles/.vimrc.plugin.vim-airline
 source $HOME/dotfiles/.vimrc.plugin.YankRing
 " source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
+source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-milfeulle
 " テンプレートのテスト
 let g:sonictemplate_vim_template_dir = '$HOME/dotfiles/template'
 
