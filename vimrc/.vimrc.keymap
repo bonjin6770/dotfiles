@@ -37,8 +37,8 @@ noremap <Leader><Leader> :up<CR>
 
 " osyo-manga/vim-milfeulle
 " 履歴を移動するマッピング
-nmap <Leader>h <Plug>(milfeulle-prev)
-nmap <Leader>l <Plug>(milfeulle-next)
+nmap <Leader>j <Plug>(milfeulle-prev)
+nmap <Leader>k <Plug>(milfeulle-next)
 
 "=============================================================================
 " The prefix key.
