@@ -1,0 +1,5 @@
+" 大文字小文字の区別をしないようにする。
+let b:match_ignorecase = 1
+"
+let b:match_words = &matchpairs .  ',<begin>:<end>,<if>:<endif>,<if>:<end>,<if>:<end if>,<if>:<elseif>,<if>:<else if>,<if*then begin>:<end>,<if*then begin>:<else if>,<if*then begin>:<else>'
+
