@@ -40,6 +40,11 @@ noremap <Leader><Leader> :up<CR>
 nmap <Leader>j <Plug>(milfeulle-prev)
 nmap <Leader>k <Plug>(milfeulle-next)
 
+" 前の変更場所に移動
+noremap <Leader>h g;
+" 次の変更場所に移動
+noremap <Leader>l g,
+
 "=============================================================================
 " The prefix key.
 "=============================================================================
