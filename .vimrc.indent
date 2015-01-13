@@ -16,7 +16,8 @@ set cindent      " Cプログラムファイルの自動インデントを始める
 
 
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
-set tabstop=2 shiftwidth=2 softtabstop=0
+" set tabstop=2 shiftwidth=2 softtabstop=0
+set tabstop=4 shiftwidth=4 softtabstop=0
 
 
 if has("autocmd")
@@ -26,7 +27,6 @@ if has("autocmd")
   filetype indent on
   " これらのftではインデントを無効に
   "autocmd FileType php filetype indent off
-
 
   autocmd FileType apache     setlocal sw=4 sts=4 ts=4 et
   autocmd FileType aspvbs     setlocal sw=4 sts=4 ts=4 et
@@ -54,4 +54,5 @@ if has("autocmd")
   autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType pascal     setlocal sw=2 sts=0 ts=2 et
 endif
