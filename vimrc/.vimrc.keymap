@@ -45,6 +45,9 @@ noremap <Leader>h g;
 " 次の変更場所に移動
 noremap <Leader>l g,
 
+" savevers.vim VersDiffから抜ける
+noremap <Leader>vq :VersDiff -c<CR>
+
 "=============================================================================
 " The prefix key.
 "=============================================================================
@@ -104,9 +107,12 @@ nnoremap <S-F2> :Template<Space>
 " <S-F4>
 " <S-F5>
 " <S-F6>
-" <S-F7>
-" <S-F8>
-" <S-F9>
+" <S-F7>  savevers.vim ひとつ前のバックアップと比較
+nnoremap <S-F7> :VersDiff -<CR>
+" <S-F8> savevers.vim ひとつ後のバックアップと比較
+nnoremap <S-F8> :VersDiff +<CR>
+" <S-F9> savevers.vim VersDiffから抜ける
+nnoremap <S-F9> :VersDiff -C<CR>
 " <S-F10>
 " <S-F11> 現在開いているすべてのバッファからgrep
 "         見えているバッファからgrepする場合は、bufdoの代わりにwindoを使う

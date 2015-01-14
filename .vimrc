@@ -72,12 +72,11 @@ source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 source $HOME/dotfiles/.vimrc.plugin.vim-airline
 source $HOME/dotfiles/.vimrc.plugin.YankRing
-" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
+source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-milfeulle
 " matchit.vimの有効化
 source $VIMRUNTIME/macros/matchit.vim
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.matchit
-
 
 " テンプレートのテスト
 let g:sonictemplate_vim_template_dir = '$HOME/dotfiles/template'

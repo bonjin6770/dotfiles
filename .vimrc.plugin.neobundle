@@ -53,11 +53,12 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'vim-scripts/FavEx'
 NeoBundle 'mattn/sonictemplate-vim'
 NeoBundle 'vim-scripts/tagexplorer.vim'
-NeoBundle 'vim-scripts/Changed'
+" NeoBundle 'vim-scripts/Changed'
 NeoBundle 'vim-scripts/closetag.vim'
 NeoBundle "osyo-manga/vim-milfeulle"
 NeoBundle "mhinz/vim-startify"
 NeoBundle "terryma/vim-expand-region"
+NeoBundle "vim-scripts/savevers.vim"
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
