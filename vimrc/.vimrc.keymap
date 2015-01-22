@@ -2,8 +2,41 @@
 "    Description: key map
 "         Author:
 "=============================================================================
+
+"*****************************************************************************
+"
+"*****************************************************************************
 " input number
 " nmap <silent>;bm :ls<CR>:buf
+
+noremap j gj
+noremap k gk
+
+" Shift + h で左端
+noremap <S-h>   ^
+" Shift + lで右端にカーソル移動
+noremap <S-l>   $
+
+noremap <S-j>   }
+noremap <S-k>   {
+noremap m  %
+" ノーマルモードでもリターンキーで改行
+nnoremap <CR> A<CR><ESC>
+" バッファ全体のインデント整理
+nnoremap == gg=G''
+" オムニ補完をキー一発でできるように設定
+inoremap <C-f> <C-x><C-o>
+
+" カーソルから行末までコピー
+" vi との互換のために行全体をコピーする仕様らしいが、
+" 他のキー(C,D)との兼ね合いも含めて変更する。
+nnoremap Y y$
+" 改行を含めないで全体をヤンク
+nnoremap yl ^y$
+
+" ビジュアルモードで < > キーによるインデント後にビジュアルモードが解除されないようにする
+vnoremap < <gv
+vnoremap > >gv
 
 "*****************************************************************************
 " <leader>
@@ -18,9 +51,9 @@ noremap <leader>p :bp<CR>
 noremap <leader>d :bd<CR>
 
 " カーソル位置の単語選択
-noremap <leader>e viw
+" noremap <leader>e viw
 " カーソル位置の単語ヤンク
-" noremap <leader>y viy
+noremap <leader>e yiw
 
 " ダブルクォートの中身を選択
 " noremap <leader>e vi"
