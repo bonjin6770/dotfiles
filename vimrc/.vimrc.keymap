@@ -81,6 +81,11 @@ noremap <Leader>l g,
 " savevers.vim VersDiffから抜ける
 noremap <Leader>vq :VersDiff -c<CR>
 
+" memolist.vim
+map <Leader>mn  :MemoNew<CR>
+map <Leader>ml  :MemoList<CR>
+map <Leader>mg  :MemoGrep<CR>
+
 "=============================================================================
 " The prefix key.
 "=============================================================================
