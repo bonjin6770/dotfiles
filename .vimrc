@@ -47,6 +47,9 @@ source $HOME/dotfiles/.vimrc.abbreviations
 " シンタックスハイライト
 source $HOME/dotfiles/.vimrc.syntax
 
+" ローカル設定
+source ~/dotfiles/vimrc/.vimrc.local
+
 " mac用設定
 if has('mac')
   " source $HOME/dotfiles/.vimrc.mac
@@ -77,6 +80,7 @@ source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-milfeulle
 " matchit.vimの有効化
 source $VIMRUNTIME/macros/matchit.vim
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.matchit
+source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.memolist
 
 " テンプレートのテスト
 let g:sonictemplate_vim_template_dir = '$HOME/dotfiles/template'
@@ -329,3 +333,5 @@ vmap ,, <Plug>NERDCommenterToggle
 " " プラグイン設定
 " source ~/dotfiles/vimrc/.vimrc.plugin
 
+" ローカル設定
+" source ~/dotfiles/vimrc/.vimrc.local
