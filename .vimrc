@@ -48,7 +48,9 @@ source $HOME/dotfiles/.vimrc.abbreviations
 source $HOME/dotfiles/.vimrc.syntax
 
 " ローカル設定
-source ~/dotfiles/vimrc/.vimrc.local
+if filereadable(expand("~/dotfiles/vimrc/.vimrc.local"))
+  source ~/dotfiles/vimrc/.vimrc.local
+endif
 
 " mac用設定
 if has('mac')
@@ -67,7 +69,7 @@ let g:sonictemplate_vim_template_dir = '~/dotfiles/template'
 " プラグイン設定
 source $HOME/dotfiles/.vimrc.plugin.neobundle
 source $HOME/dotfiles/.plugin.neocomplete.vimrc
-" source $HOME/dotfiles/.vimrc.plugin.neosnippet
+source $HOME/dotfiles/.vimrc.plugin.neosnippet
 source $HOME/dotfiles/.plugin.jedi_vim.vimrc
 source $HOME/dotfiles/.plugin.pymode.vimrc
 source $HOME/dotfiles/.vimrc.plugin.vim-quickhl
@@ -78,8 +80,8 @@ source $HOME/dotfiles/.vimrc.plugin.YankRing
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-milfeulle
 " matchit.vimの有効化
-source $VIMRUNTIME/macros/matchit.vim
-source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.matchit
+" source $VIMRUNTIME/macros/matchit.vim
+" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.matchit
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.memolist
 
 " テンプレートのテスト
@@ -126,56 +128,6 @@ colorscheme darkblue
 autocmd QuickFixCmdPost *grep* cwindow
 
 nmap <S-F5> :ls<CR>:buf
-
-" neocomplcache
-" neocomplcacheを起動時に有効化する
-" let g:neocomplcache_enable_at_startup = 1
-" " 大文字が入力されるまで大文字小文字の区別を無視する
-" let g:neocomplcache_enable_smart_case = 1
-" " _(アンダーバー)区切りの補完を有効化します
-" let g:neocomplcache_enable_underbar_completion = 1
-" " シンタックスをキャッシュするときの最小文字長を3にしています。
-" let g:neocomplcache_min_syntax_length = 3
-" " ディクショナリ定義
-" let g:neocomplcache_dictionary_filetype_lists = {
-"     \ 'default' : '',
-"     \ 'vimshell' : $HOME.'/.vimshell_hist',
-"     \ 'scheme' : $HOME.'/.gosh_completions',
-"     \ 'php' : $HOME . '/.vim/dict/php.dict'
-"         \ }
-" " Define keyword.
-" if !exists('g:neocomplcache_keyword_patterns')
-"     let g:neocomplcache_keyword_patterns = {}
-" endif
-" " キーワードパターンの設定
-" let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-" " 補完ウィンドウの設定
-" set completeopt=menuone
-" " ポップアップメニューで表示される候補の数
-" let g:neocomplcache_max_list = 20
-" "tabで補完候補の選択を行う
-" "inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-" " inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-" " スニペットを展開する。スニペットが関係しないところでは行末まで削除
-" imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
-" smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
-" " 前回行われた補完をキャンセルします
-" inoremap <expr><C-g> neocomplcache#undo_completion()
-" " 補完候補のなかから、共通する部分を補完します
-" inoremap <expr><C-l> neocomplcache#complete_common_string()
-" " <C-h>や<BS>を押したときに確実にポップアップを削除します
-" inoremap <expr><C-h> neocomplcache#smart_close_popup().”\<C-h>
-" " 現在選択している候補を確定します
-" inoremap <expr><C-y> neocomplcache#close_popup()
-" " 現在選択している候補をキャンセルし、ポップアップを閉じます
-" inoremap <expr><C-e> neocomplcache#cancel_popup()
-" " 改行で補完ウィンドウを閉じる
-" inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-" " 手動でneocomplcacheを起動する
-" inoremap <expr><C-n> neocomplcache#start_manual_complete()
-" " 自動でneocomplcacheが起動するのをやめる
-" let g:neocomplcache_disable_auto_complete = 1
-" neocomplcache END"
 
 " " 検索時に大/小文字を区別しない
 " set ignorecase
@@ -335,3 +287,12 @@ vmap ,, <Plug>NERDCommenterToggle
 
 " ローカル設定
 " source ~/dotfiles/vimrc/.vimrc.local
+"
+function! CleverTab()
+   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+      return "\<Tab>"
+   else
+      return "\<C-N>"
+   endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
