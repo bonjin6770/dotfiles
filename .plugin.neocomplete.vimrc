@@ -1,6 +1,6 @@
 "=============================================================================
 "    Description: neocomplete
-"         Author: Shintaro Kurosawa
+"         Author:
 "  Last Modified: 2014-06-28
 "        Version: 1.0
 "=============================================================================
@@ -40,12 +40,13 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 "
+
 " 2015/1/25 macvimのimeの挙動がおかしいため、一時コメントアウト
 " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 " function! s:my_cr_function()
-  " return neocomplete#close_popup() . "\<CR>"
-  " " For no inserting <CR> key.
-  " "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"   return neocomplete#close_popup() . "\<CR>"
+"   For no inserting <CR> key.
+"  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 " endfunction
 
 " <TAB>: completion.
@@ -95,3 +96,10 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" ひらがな入力モードで補完機能を抑制
+if has('mac')
+  let g:neocomplete#lock_iminsert = 1
+endif
+" 補完開始文字数
+let g:neocomplete#auto_completion_start_length = 4

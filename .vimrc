@@ -66,8 +66,8 @@ let g:sonictemplate_vim_template_dir = '~/dotfiles/template'
 
 " プラグイン設定
 source $HOME/dotfiles/.vimrc.plugin.neobundle
-" source $HOME/dotfiles/.plugin.neocomplete.vimrc
-" source $HOME/dotfiles/.vimrc.plugin.neosnippet
+source $HOME/dotfiles/.plugin.neocomplete.vimrc
+source $HOME/dotfiles/.vimrc.plugin.neosnippet
 source $HOME/dotfiles/.plugin.jedi_vim.vimrc
 source $HOME/dotfiles/.plugin.pymode.vimrc
 source $HOME/dotfiles/.vimrc.plugin.vim-quickhl

@@ -23,9 +23,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
-" NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
-" NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'yonchu/accelerated-smooth-scroll'
