@@ -21,7 +21,7 @@ noremap <S-j>   }
 noremap <S-k>   {
 noremap m  %
 " ノーマルモードでもリターンキーで改行
-nnoremap <CR> A<CR><ESC>
+" nnoremap <CR> A<CR><ESC>
 " バッファ全体のインデント整理
 nnoremap == gg=G''
 " オムニ補完をキー一発でできるように設定
@@ -45,11 +45,13 @@ vnoremap > >gv
 " let mapleader=','
 let mapleader = "\<Space>"
 
+let mapleader=','
 " buffer
-noremap <leader>n :bn<CR>
-noremap <leader>p :bp<CR>
-noremap <leader>d :bd<CR>
+" noremap <leader>n :bn<CR>
+" noremap <leader>p :bp<CR>
+" noremap <leader>d :bd<CR>
 
+let mapleader = "\<Space>"
 " カーソル位置の単語選択
 " noremap <leader>e viw
 " カーソル位置の単語ヤンク
@@ -70,13 +72,13 @@ noremap <Leader><Leader> :up<CR>
 
 " osyo-manga/vim-milfeulle
 " 履歴を移動するマッピング
-nmap <Leader>j <Plug>(milfeulle-prev)
-nmap <Leader>k <Plug>(milfeulle-next)
+nmap <Leader>p <Plug>(milfeulle-prev)
+nmap <Leader>n <Plug>(milfeulle-next)
 
 " 前の変更場所に移動
-noremap <Leader>h g;
+" noremap <Leader>h g;
 " 次の変更場所に移動
-noremap <Leader>l g,
+" noremap <Leader>l g,
 
 " savevers.vim VersDiffから抜ける
 noremap <Leader>vq :VersDiff -c<CR>
@@ -85,6 +87,20 @@ noremap <Leader>vq :VersDiff -c<CR>
 map <Leader>mn  :MemoNew<CR>
 map <Leader>ml  :MemoList<CR>
 map <Leader>mg  :MemoGrep<CR>
+
+" vim-easymotion
+" JK motions: Line motions
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap <leader>s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+" nmap <leader>s <Plug>(easymotion-s2)
 
 "=============================================================================
 " The prefix key.

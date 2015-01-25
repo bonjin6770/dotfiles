@@ -59,6 +59,7 @@ NeoBundle "mhinz/vim-startify"
 NeoBundle "terryma/vim-expand-region"
 NeoBundle "vim-scripts/savevers.vim"
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
