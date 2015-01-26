@@ -46,7 +46,7 @@ vnoremap > >gv
 let mapleader = "\<Space>"
 " buffer
 noremap <leader>w :bn<CR>
-noremap <leader>p :bp<CR>
+noremap <leader>q :bp<CR>
 noremap <leader>d :bd<CR>
 
 " カーソル位置の単語選択

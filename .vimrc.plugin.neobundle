@@ -39,7 +39,7 @@ NeoBundle 'vim-scripts/mru.vim'
 NeoBundle "Shougo/unite-outline"
 NeoBundle 'vim-scripts/vimdir.vim'
 NeoBundle 'vim-scripts/ReplaceWithSameIndentRegister'
-NeoBundle 'vim-scripts/ShowWhiteSpace'
+" NeoBundle 'vim-scripts/ShowWhiteSpace'
 NeoBundle 'vim-scripts/exjumplist'
 NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'osyo-manga/vim-anzu'
