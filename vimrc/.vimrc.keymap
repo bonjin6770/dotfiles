@@ -44,14 +44,11 @@ vnoremap > >gv
 " Map leader to ,
 " let mapleader=','
 let mapleader = "\<Space>"
-
-let mapleader=','
 " buffer
-" noremap <leader>n :bn<CR>
-" noremap <leader>p :bp<CR>
-" noremap <leader>d :bd<CR>
+noremap <leader>w :bn<CR>
+noremap <leader>p :bp<CR>
+noremap <leader>d :bd<CR>
 
-let mapleader = "\<Space>"
 " カーソル位置の単語選択
 " noremap <leader>e viw
 " カーソル位置の単語ヤンク
@@ -92,6 +89,9 @@ map <Leader>mg  :MemoGrep<CR>
 " JK motions: Line motions
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
+
+nmap <Leader>l <Plug>(easymotion-w)
+nmap <Leader>h <Plug>(easymotion-b)
 
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
