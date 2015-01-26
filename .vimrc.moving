@@ -11,8 +11,8 @@
 "----------------------------------------
 "inoremap  <C-e> <END>
 "inoremap  <C-a> <HOME>
-imap <C-a>  <Home>
-imap <C-e>  <End>
+" imap <C-a>  <Home>
+" imap <C-e>  <End>
 " imap <C-b>  <Left>
 " imap <C-f>  <Right>
 " imap <C-n>  <Down>
@@ -21,48 +21,24 @@ imap <C-e>  <End>
 "imap <ESC>> <ESC>Gi
 
 "----------------------------------------
-" インサートモードでもhjklで移動（Ctrl押すけどね）
-"----------------------------------------
-" inoremap <C-j> <Down>
-" inoremap <C-k> <Up>
-" inoremap <C-h> <Left>
-" inoremap <C-l> <Right>
-
-"----------------------------------------
-"<space>j, <space>kで画面送り
-"----------------------------------------
-" noremap <Space>j <C-f>
-" noremap <Space>k <C-b>
-
-"----------------------------------------
 " spaceで次のbufferへ。back-spaceで前のbufferへ
 "----------------------------------------
-nmap <Space><Space> ;MBEbn<CR>
-nmap <BS><BS> ;MBEbp<CR>
+" nmap <Space><Space> ;MBEbn<CR>
+" nmap <BS><BS> ;MBEbp<CR>
 
-
-"----------------------------------------
-"----------------------------------------
-" F2で前のバッファ
-" map <F2> <ESC>;bp<CR>
-" F3で次のバッファ
-" map <F3> <ESC>;bn<CR>
-" F4でバッファを削除する
-" map <F4> <ESC>:bnext \| bdelete #<CR>
-" command! Bw :bnext \| bdelete #
 
 "----------------------------------------
 " 最後に編集された位置に移動
 "----------------------------------------
-nnoremap gb '[
-nnoremap gp ']
+" nnoremap gb '[
+" nnoremap gp ']
 
 "----------------------------------------
 " 最後に変更されたテキストを選択する
 "----------------------------------------
-" nnoremap gc  `[v`]
-" vnoremap gc <C-u>normal gc<Enter>
-" onoremap gc <C-u>normal gc<Enter>
+nnoremap gc  `[v`]
+vnoremap gc <C-u>normal gc<Enter>
+onoremap gc <C-u>normal gc<Enter>
 
 " カーソル位置の単語をyankする
 nnoremap vy vawy

@@ -7,12 +7,12 @@
 "=============================================================================
 
 " brackets
-inoremap {} {}<LEFT>
-inoremap [] []<LEFT>
-inoremap () ()<LEFT>
-inoremap "" ""<LEFT>
-inoremap '' ''<LEFT>
-inoremap <> <><LEFT>
+" inoremap {} {}<LEFT>
+" inoremap [] []<LEFT>
+" inoremap () ()<LEFT>
+" inoremap "" ""<LEFT>
+" inoremap '' ''<LEFT>
+" inoremap <> <><LEFT>
 " vnoremap { "zdi{z}
 " vnoremap {" "zdi{"z"}
 " vnoremap {' "zdi{'z'}
@@ -26,4 +26,4 @@ inoremap <> <><LEFT>
 " vnoremap ' "zdi'z''"
 
 " C言語のコメント
-inoremap /* /*  */<LEFT><LEFT><LEFT>
+" inoremap /* /*  */<LEFT><LEFT><LEFT>
