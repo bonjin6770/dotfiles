@@ -23,7 +23,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -60,6 +59,7 @@ NeoBundle "mhinz/vim-startify"
 NeoBundle "terryma/vim-expand-region"
 NeoBundle "vim-scripts/savevers.vim"
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
@@ -93,7 +93,7 @@ NeoBundle 'vim-scripts/CSApprox'
 " NeoBundle 'Shougo/vimshell.vim'
 
 "" Snippets
-NeoBundle 'SirVer/ultisnips'
+" NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
 "" Color
