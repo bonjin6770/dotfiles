@@ -88,10 +88,14 @@ map <Leader>mg  :MemoGrep<CR>
 " vim-easymotion
 " JK motions: Line motions
 nmap <Leader>j <Plug>(easymotion-j)
+vmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
+vmap <Leader>k <Plug>(easymotion-k)
 
 nmap <Leader>l <Plug>(easymotion-w)
+vmap <Leader>l <Plug>(easymotion-w)
 nmap <Leader>h <Plug>(easymotion-b)
+vmap <Leader>h <Plug>(easymotion-b)
 
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -118,7 +122,6 @@ nnoremap <silent> [Tag]l :<C-u>tags<CR>
 "=============================================================================
 " <C-G> grep
 nmap <C-G> :vimgrep /<C-R><C-W>/j %
-
 
 "=============================================================================
 " Function Key map
