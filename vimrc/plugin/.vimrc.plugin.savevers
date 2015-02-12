@@ -9,6 +9,3 @@ set backupdir=~/temp
 :let savevers_dirs = &backupdir
 " 各バージョンとのdiffを表示する時に、ウィンドウサイズを変化させるかどうか。
 :let versdiff_no_resize=1
-:nmap <silent> <S-C-F5> :VersDiff -<cr>
-:nmap <silent> <S-C-F6> :VersDiff +<cr>
-:nmap <silent> <S-C-F8> :VersDiff -c<cr>

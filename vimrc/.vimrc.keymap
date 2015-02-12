@@ -218,18 +218,18 @@ nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/*
 " <S-C-F4>
 " <S-C-F5>
 " <S-C-F6>
-"
+
 " <S-C-F7> exjumplist
-nmap <S-C-F7>  <Plug>(exjumplist-previous-buffer)
+" nmap <S-C-F7>  <Plug>(exjumplist-previous-buffer)
 
 " <S-C-F8> exjumplist
-nmap <S-C-F8>  <Plug>(exjumplist-next-buffer)
+" nmap <S-C-F8>  <Plug>(exjumplist-next-buffer)
 
 " <S-C-F9> exjumplist
-nmap <S-C-F9> <Plug>(exjumplist-go-last)
+" nmap <S-C-F9> <Plug>(exjumplist-go-last)
 
 " <S-C-F10> exjumplist
-nmap <S-C-F10> <Plug>(exjumplist-go-first)
+" nmap <S-C-F10> <Plug>(exjumplist-go-first)
 
 " <S-C-F11>
 " <S-C-F12>
