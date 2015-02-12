@@ -19,7 +19,7 @@ noremap <S-l>   $
 
 noremap <S-j>   }
 noremap <S-k>   {
-noremap m  %
+" noremap m  %
 " ノーマルモードでもリターンキーで改行
 " nnoremap <CR> A<CR><ESC>
 " バッファ全体のインデント整理
