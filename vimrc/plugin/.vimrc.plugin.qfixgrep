@@ -1,0 +1,4 @@
+"Grepコマンドのキーマップ
+let MyGrep_Key  = '<space>'
+"Grepコマンドの2ストローク目キーマップ
+let MyGrep_KeyB = 'g'

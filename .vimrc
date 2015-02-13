@@ -62,6 +62,7 @@ source $HOME/dotfiles/.vimrc.plugin.YankRing
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-milfeulle
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-easymotion
+source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.qfixgrep
 " matchit.vimの有効化
 source $VIMRUNTIME/macros/matchit.vim
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.matchit
