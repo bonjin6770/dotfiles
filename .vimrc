@@ -119,6 +119,8 @@ imap <C-e>  <End>
 " textファイルの場合に自動改行される設定を無効とする
 set textwidth=0
 autocmd FileType text setlocal textwidth=0
+autocmd FileType vim setlocal textwidth=0
+" autocmd BufRead *.vimrc setlocal textwidth=0
 
 " 既定のvimgrepを内部grepにする
 set grepprg=internal
