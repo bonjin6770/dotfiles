@@ -61,6 +61,8 @@ NeoBundle "vim-scripts/savevers.vim"
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'fuenor/qfixgrep'
+NeoBundle 'thinca/vim-poslist'
+" NeoBundle 'vim-scripts/ShowMarks'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}

@@ -69,8 +69,13 @@ noremap <Leader><Leader> :up<CR>
 
 " osyo-manga/vim-milfeulle
 " 履歴を移動するマッピング
-nmap <Leader>p <Plug>(milfeulle-prev)
-nmap <Leader>n <Plug>(milfeulle-next)
+" nmap <Leader>p <Plug>(milfeulle-prev)
+" nmap <Leader>n <Plug>(milfeulle-next)
+
+" poslist
+" 履歴を移動するマッピング
+map <Leader>p <Plug>(poslist-prev-pos)
+map <Leader>n <Plug>(poslist-next-pos)
 
 " 前の変更場所に移動
 " noremap <Leader>h g;
@@ -123,6 +128,11 @@ nnoremap <silent> [Tag]l :<C-u>tags<CR>
 "=============================================================================
 " <C-G> grep
 nmap <C-G> :vimgrep /<C-R><C-W>/j %
+
+" vim-poslist 戻る
+" map <C-o> <Plug>(poslist-prev-pos)
+" vim-poslist 次へ
+" map <C-i> <Plug>(poslist-next-pos)
 
 "=============================================================================
 " Function Key map
