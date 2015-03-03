@@ -38,6 +38,11 @@ nnoremap yl ^y$
 vnoremap < <gv
 vnoremap > >gv
 
+" poslist
+" 履歴を移動するマッピング
+map g; <Plug>(poslist-prev-pos)
+map g, <Plug>(poslist-next-pos)
+
 "*****************************************************************************
 " <leader>
 "*****************************************************************************
@@ -67,15 +72,8 @@ noremap <Leader><Leader> :up<CR>
 " ScrExpl
 " nnoremap <Leader>o :SrcExplToggle<CR>
 
-" osyo-manga/vim-milfeulle
-" 履歴を移動するマッピング
 " nmap <Leader>p <Plug>(milfeulle-prev)
 " nmap <Leader>n <Plug>(milfeulle-next)
-
-" poslist
-" 履歴を移動するマッピング
-map <Leader>p <Plug>(poslist-prev-pos)
-map <Leader>n <Plug>(poslist-next-pos)
 
 " 前の変更場所に移動
 " noremap <Leader>h g;
@@ -141,9 +139,10 @@ nmap <C-G> :vimgrep /<C-R><C-W>/j %
 " F[1~12]
 " ------------------------------------------
 " <F1> Vim Help
-
-" <F2>
+" <F2> カーソルがある行から [count] 個先の小文字のマークがある行の最初の非空白文字へ移動します。{Vi にはありません}
+nnoremap <F2> :<C-u>call <SID>AutoMarkrement_NextJump()<CR>
 " <F3>
+noremap <F3> :NERDTreeToggle<CR>
 " <F4>
 
 " <F5> bufferlist.vim
@@ -169,10 +168,12 @@ nnoremap <F12> :copen <CR>
 " S-F[1~12]
 " ------------------------------------------
 " <S-F1>
-" <S-F2> Template
-nnoremap <S-F2> :Template<Space>
+" <S-F2>カーソル位置より [count] 個前の小文字のマークへ移動します。{Vi にはありません}
+nnoremap <S-F2> :<C-u>call <SID>AutoMarkrement_PreJump()<CR>
 " <S-F3>
-" <S-F4>
+nnoremap <silent> <S-F3> :NERDTreeFind<CR>
+" <S-F4> Template
+nnoremap <S-F4> :Template<Space>
 " <S-F5>
 " <S-F6>
 " <S-F7>  savevers.vim ひとつ前のバックアップと比較
@@ -194,6 +195,7 @@ nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/*
 " ------------------------------------------
 " <C-F1>
 " <C-F2>
+map <C-F2> delmarks!
 " <C-F3>
 " <C-F4>
 " <C-F5>
@@ -298,3 +300,50 @@ nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/*
 "=============================================================================
 " ノーマルモードでもエンターキーで改行を挿入
 " noremap <CR> o<ESC>
+"
+
+" Mark用
+if !exists('g:markrement_char')
+    " let g:markrement_char = [
+    " \     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    " \     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+    " \ ]
+    let g:markrement_char = [
+    \     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    \     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    \ ]
+endif
+
+if !exists('g:markrement_jump_pos')
+  let g:markrement_jump_pos = 0
+endif
+
+" nnoremap <silent>m :<C-u>call <SID>AutoMarkrement()<CR>
+
+function! s:AutoMarkrement()
+    if !exists('b:markrement_mark_pos')
+        let b:markrement_mark_pos = 0
+        let g:markrement_jump_pos = 0
+    else
+        let b:markrement_mark_pos = (b:markrement_mark_pos + 1) % len(g:markrement_char)
+        let g:markrement_jump_pos = (b:markrement_mark_pos + 1) % len(g:markrement_char)
+    endif
+    execute 'mark' g:markrement_char[b:markrement_mark_pos]
+    echo 'marked' g:markrement_char[b:markrement_mark_pos]
+endfunction
+
+function! s:AutoMarkrement_NextJump()
+    execute 'normal `' . (g:markrement_char[g:markrement_jump_pos + 1])
+    echo 'jump to ' . (g:markrement_char[g:markrement_jump_pos + 1])
+    let g:markrement_jump_pos = (g:markrement_jump_pos + 1) % len(g:markrement_char)
+endfunction
+
+function! s:AutoMarkrement_PreJump()
+  execute 'normal `' . (g:markrement_char[g:markrement_jump_pos - 1] )
+  echo 'jump to ' . (g:markrement_char[g:markrement_jump_pos - 1])
+  if g:markrement_jump_pos <= 0
+    let g:markrement_jump_pos = len(g:markrement_char) - 1
+  else
+    let g:markrement_jump_pos = (g:markrement_jump_pos - 1) % len(g:markrement_char)
+  endif
+endfunction
