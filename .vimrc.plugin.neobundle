@@ -63,6 +63,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'thinca/vim-poslist'
 " NeoBundle 'vim-scripts/ShowMarks'
+" NeoBundle 'vim-scripts/Visual-Mark'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
