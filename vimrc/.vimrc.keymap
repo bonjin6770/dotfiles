@@ -2,7 +2,6 @@
 "    Description: key map
 "         Author:
 "=============================================================================
-
 "*****************************************************************************
 "
 "*****************************************************************************
@@ -49,6 +48,13 @@ map g, <Plug>(poslist-next-pos)
 " Map leader to ,
 " let mapleader=','
 let mapleader = "\<Space>"
+
+" <Leader>a
+" <Leader>b
+" <Leader>c : quickfix用のプレフィックス
+map <leader>cl :cclose<CR>
+map <leader>co :copen<CR>
+
 " buffer
 noremap <leader>w :bn<CR>
 noremap <leader>q :bp<CR>
@@ -90,25 +96,35 @@ map <Leader>'g  :MemoGrep<CR>
 
 " vim-easymotion
 " JK motions: Line motions
-nmap <Leader>j <Plug>(easymotion-j)
-vmap <Leader>j <Plug>(easymotion-j)
-nmap <Leader>k <Plug>(easymotion-k)
-vmap <Leader>k <Plug>(easymotion-k)
+"# keep cursor colum JK motion
+let g:EasyMotion_startofline = 0
+" nmap <Leader>j <Plug>(easymotion-j)
+" vmap <Leader>j <Plug>(easymotion-j)
+" nmap <Leader>k <Plug>(easymotion-k)
+" vmap <Leader>k <Plug>(easymotion-k)
+nmap <Leader>j <Plug>(easymotion-sol-j)
+vmap <Leader>j <Plug>(easymotion-sol-j
+nmap <Leader>k <Plug>(easymotion-sol-k)
+vmap <Leader>k <Plug>(easymotion-sol-k)
 
 nmap <Leader>l <Plug>(easymotion-w)
 vmap <Leader>l <Plug>(easymotion-w)
 nmap <Leader>h <Plug>(easymotion-b)
 vmap <Leader>h <Plug>(easymotion-b)
 
+nmap <Leader>; <Plug>(easymotion-jumptoanywhere)
+vmap <Leader>; <Plug>(easymotion-jumptoanywhere)
 
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
 nmap <leader>s <Plug>(easymotion-s)
+
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
 " nmap <leader>s <Plug>(easymotion-s2)
+
 
 "=============================================================================
 " The prefix key.
@@ -162,8 +178,8 @@ nnoremap <F8> :cnext <CR>
 
 " <F10>
 " <F11>
-" <F12> 検索結果の表示(Quickfix)
-nnoremap <F12> :copen <CR>
+" <F12> 検索結果の表示()
+nnoremap <F12> <C-]>
 " ------------------------------------------
 " S-F[1~12]
 " ------------------------------------------
@@ -347,3 +363,8 @@ function! s:AutoMarkrement_PreJump()
     let g:markrement_jump_pos = (g:markrement_jump_pos - 1) % len(g:markrement_char)
   endif
 endfunction
+
+
+
+
+
