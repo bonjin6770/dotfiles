@@ -49,6 +49,15 @@ map g, <Plug>(poslist-next-pos)
 " let mapleader=','
 let mapleader = "\<Space>"
 
+" 左手だけでコピーアンドペーストができるように
+noremap <leader>c y
+vnoremap <leader>c y
+noremap <leader>v p
+vnoremap <leader>v p
+noremap <leader>z u
+noremap <leader>Z <C-r>
+
+
 " <Leader>a
 " <Leader>b
 " <Leader>c : quickfix用のプレフィックス
@@ -64,6 +73,7 @@ noremap <leader>d :bd<CR>
 " noremap <leader>e viw
 " カーソル位置の単語ヤンク
 noremap <leader>e yiw
+vnoremap <leader>e y
 
 " ダブルクォートの中身を選択
 " noremap <leader>e vi"
