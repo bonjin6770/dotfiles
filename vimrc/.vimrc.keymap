@@ -155,17 +155,18 @@ nmap <C-G> :vimgrep /<C-R><C-W>/j %
 " F[1~12]
 " ------------------------------------------
 " <F1> Vim Help
-" <F2> カーソルがある行から [count] 個先の小文字のマークがある行の最初の非空白文字へ移動します。{Vi にはありません}
-nnoremap <F2> :<C-u>call <SID>AutoMarkrement_NextJump()<CR>
-" <F3>
-noremap <F3> :NERDTreeToggle<CR>
+" <F2>
+" <F3> カーソルがある行から [count] 個先の小文字のマークがある行の最初の非空白文字へ移動します。{Vi にはありません}
+nnoremap <F3> :<C-u>call <SID>AutoMarkrement_NextJump()<CR>
 " <F4>
 
 " <F5> bufferlist.vim
 map <silent> <F5> :call BufferList()<CR>
 
 " <F6> SrcExpl.vim
-nnoremap <F6> :SrcExplToggle<CR>
+" nnoremap <F6> :SrcExplToggle<CR>
+
+" <F6>
 
 " <F7> 前の該当位置へジャンプ
 nnoremap <F7> :cprevious <CR>
@@ -177,6 +178,8 @@ nnoremap <F8> :cnext <CR>
 " nnoremap <F9> :source %<CR>
 
 " <F10>
+" noremap <F3> :NERDTreeToggle<CR>
+nnoremap <silent> <F10> :NERDTreeFind<CR>
 " <F11>
 " <F12> 検索結果の表示()
 nnoremap <F12> <C-]>
@@ -184,10 +187,11 @@ nnoremap <F12> <C-]>
 " S-F[1~12]
 " ------------------------------------------
 " <S-F1>
-" <S-F2>カーソル位置より [count] 個前の小文字のマークへ移動します。{Vi にはありません}
-nnoremap <S-F2> :<C-u>call <SID>AutoMarkrement_PreJump()<CR>
+" <S-F2>
 " <S-F3>
-nnoremap <silent> <S-F3> :NERDTreeFind<CR>
+" カーソル位置より [count] 個前の小文字のマークへ移動します。{Vi にはありません}
+" nnoremap <silent> <S-F3> :NERDTreeFind<CR>
+nnoremap <S-F3> :<C-u>call <SID>AutoMarkrement_PreJump()<CR>
 " <S-F4> Template
 nnoremap <S-F4> :Template<Space>
 " <S-F5>
@@ -211,7 +215,7 @@ nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/*
 " ------------------------------------------
 " <C-F1>
 " <C-F2>
-map <C-F2> delmarks!
+" :map <unique> <C-F3> <Plug>Vm_toggle_sign
 " <C-F3>
 " <C-F4>
 " <C-F5>
@@ -349,9 +353,9 @@ function! s:AutoMarkrement()
 endfunction
 
 function! s:AutoMarkrement_NextJump()
-    execute 'normal `' . (g:markrement_char[g:markrement_jump_pos + 1])
-    echo 'jump to ' . (g:markrement_char[g:markrement_jump_pos + 1])
     let g:markrement_jump_pos = (g:markrement_jump_pos + 1) % len(g:markrement_char)
+    echo 'jump to ' . (g:markrement_char[g:markrement_jump_pos])
+    execute 'normal `' . (g:markrement_char[g:markrement_jump_pos])
 endfunction
 
 function! s:AutoMarkrement_PreJump()
@@ -363,8 +367,5 @@ function! s:AutoMarkrement_PreJump()
     let g:markrement_jump_pos = (g:markrement_jump_pos - 1) % len(g:markrement_char)
   endif
 endfunction
-
-
-
 
 
