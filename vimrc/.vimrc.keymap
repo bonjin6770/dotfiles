@@ -19,8 +19,6 @@ noremap <S-l>   $
 noremap <S-j>   }
 noremap <S-k>   {
 " noremap m  %
-" ノーマルモードでもリターンキーで改行
-" nnoremap <CR> A<CR><ESC>
 " バッファ全体のインデント整理
 nnoremap == gg=G''
 " オムニ補完をキー一発でできるように設定
@@ -205,6 +203,7 @@ nnoremap <S-F3> :<C-u>call <SID>AutoMarkrement_PreJump()<CR>
 " <S-F4> Template
 nnoremap <S-F4> :Template<Space>
 " <S-F5>
+nmap <S-F5> :ls<CR>:b
 " <S-F6>
 " <S-F7>  savevers.vim ひとつ前のバックアップと比較
 nnoremap <S-F7> :VersDiff -<CR>
@@ -223,7 +222,7 @@ nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/*
 " ------------------------------------------
 " C-F[1~12]
 " ------------------------------------------
-" <C-F1>
+" <C-F1>help
 " <C-F2>
 " :map <unique> <C-F3> <Plug>Vm_toggle_sign
 " <C-F3>
@@ -334,14 +333,14 @@ nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/*
 
 " Mark用
 if !exists('g:markrement_char')
-    " let g:markrement_char = [
-    " \     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-    " \     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-    " \ ]
-    let g:markrement_char = [
-    \     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-    \     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-    \ ]
+  " let g:markrement_char = [
+  " \     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+  " \     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+  " \ ]
+  let g:markrement_char = [
+        \     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+        \     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+        \ ]
 endif
 
 if !exists('g:markrement_jump_pos')
@@ -351,21 +350,21 @@ endif
 " nnoremap <silent>m :<C-u>call <SID>AutoMarkrement()<CR>
 
 function! s:AutoMarkrement()
-    if !exists('b:markrement_mark_pos')
-        let b:markrement_mark_pos = 0
-        let g:markrement_jump_pos = 0
-    else
-        let b:markrement_mark_pos = (b:markrement_mark_pos + 1) % len(g:markrement_char)
-        let g:markrement_jump_pos = (b:markrement_mark_pos + 1) % len(g:markrement_char)
-    endif
-    execute 'mark' g:markrement_char[b:markrement_mark_pos]
-    echo 'marked' g:markrement_char[b:markrement_mark_pos]
+  if !exists('b:markrement_mark_pos')
+    let b:markrement_mark_pos = 0
+    let g:markrement_jump_pos = 0
+  else
+    let b:markrement_mark_pos = (b:markrement_mark_pos + 1) % len(g:markrement_char)
+    let g:markrement_jump_pos = (b:markrement_mark_pos + 1) % len(g:markrement_char)
+  endif
+  execute 'mark' g:markrement_char[b:markrement_mark_pos]
+  echo 'marked' g:markrement_char[b:markrement_mark_pos]
 endfunction
 
 function! s:AutoMarkrement_NextJump()
-    let g:markrement_jump_pos = (g:markrement_jump_pos + 1) % len(g:markrement_char)
-    echo 'jump to ' . (g:markrement_char[g:markrement_jump_pos])
-    execute 'normal `' . (g:markrement_char[g:markrement_jump_pos])
+  let g:markrement_jump_pos = (g:markrement_jump_pos + 1) % len(g:markrement_char)
+  echo 'jump to ' . (g:markrement_char[g:markrement_jump_pos])
+  execute 'normal `' . (g:markrement_char[g:markrement_jump_pos])
 endfunction
 
 function! s:AutoMarkrement_PreJump()

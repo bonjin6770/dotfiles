@@ -131,10 +131,8 @@ colorscheme darkblue
 " Quickfixを常に開く
 autocmd QuickFixCmdPost *grep* cwindow
 
-nmap <S-F5> :ls<CR>:buf
-
 " " 検索時に大/小文字を区別しない
-" set ignorecase
+set ignorecase
 " " 検索時に大文字を含んでいたら大/小を区別
 " set smartcase
 " " 検索をファイルの先頭へループしない
