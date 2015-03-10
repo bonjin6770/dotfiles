@@ -35,11 +35,12 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
@@ -47,7 +48,7 @@ inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
 " Close popup by <Space>
 " pumvisibleは、neocompleteの補完メニューが出ているかどうかを判定してくれます
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+" inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
 " For cursor moving in insert mode(Not recommended)
 "inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
@@ -98,9 +99,9 @@ endif
 let g:neocomplete#enable_camel_case_completion = 1
 
 " _(アンダーバー)区切りの補完を有効化
-" let g:neocomplete#enable_underbar_completion = 1
+let g:neocomplete#enable_underbar_completion = 1
 
-" シンタックスをキャッシュするときの最小文字長を3に
+" シンタックスをキャッシュするときの最小文字長
 let g:neocomplete#min_syntax_length = 1
 
 " 補完をキャンセルしてカーソル移動(ここらへんはご自由に！)
@@ -117,6 +118,7 @@ let g:neocomplete#auto_completion_start_length = 3
 
 " 補完をキャンセルしpopupを閉じる
 inoremap <expr><C-e> neocomplete#cancel_popup()
+inoremap <expr><C-TAB> pumvisible() ? neocomplete#cancel_popup() : "\<C-TAB>"
 
 " TABで補完できるようにする
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -133,4 +135,10 @@ inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 
 " 補完候補が出ていたら確定、なければ改行
-inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "<CR>"
+" vim-endwiseのプラグインとバッティング。enterを押すと変な文字が入力されてしまう。
+" inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "<CR>"
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'

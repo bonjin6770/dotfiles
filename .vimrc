@@ -15,7 +15,7 @@ source $HOME/dotfiles/.vimrc.system
 source $HOME/dotfiles/.vimrc.moving
 
 " インデント
- source $HOME/dotfiles/.vimrc.indent
+source $HOME/dotfiles/.vimrc.indent
 
 " ファイル操作
 source $HOME/dotfiles/.vimrc.file
@@ -299,4 +299,10 @@ function! CleverTab()
 endfunction
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
-
+" --------------------------------
+" rubocop
+" --------------------------------
+" syntastic_mode_mapをactiveにするとバッファ保存時にsyntasticが走る
+" active_filetypesに、保存時にsyntasticを走らせるファイルタイプを指定する
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+" let g:syntastic_ruby_checkers = ['rubocop']
