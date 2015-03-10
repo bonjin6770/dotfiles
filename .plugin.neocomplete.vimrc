@@ -62,7 +62,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " AutoComplPop like behavior.
 " メニューの一番目を自動選択
-"let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
