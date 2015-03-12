@@ -35,8 +35,17 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-" inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
 
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -62,7 +71,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " AutoComplPop like behavior.
 " メニューの一番目を自動選択
-let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 0
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
@@ -109,7 +118,7 @@ inoremap <expr><left> neocomplete#cancel_popup() . "\<left>"
 inoremap <expr><right> neocomplete#cancel_popup() . "\<right>"
 
 " 補完開始文字数
-let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#auto_completion_start_length = 2
 
 "----------------------------------------
 " 以下、macvim対策で設定しなおした。
