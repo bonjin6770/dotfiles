@@ -297,7 +297,7 @@ function! CleverTab()
       return "\<C-N>"
    endif
 endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
+" inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " --------------------------------
 " rubocop
@@ -306,3 +306,10 @@ inoremap <Tab> <C-R>=CleverTab()<CR>
 " active_filetypesに、保存時にsyntasticを走らせるファイルタイプを指定する
 " let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
 " let g:syntastic_ruby_checkers = ['rubocop']
+
+" 現在編集中のバッファのファイル名を変更する
+" usage
+"   :Rename newfilename
+"   強制保存して変更
+"   :Rename! newfilename
+command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
