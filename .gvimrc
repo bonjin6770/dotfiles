@@ -24,3 +24,7 @@ set list
 if has('mac')
   " set imdisable
 endif
+
+
+" 横スクロールバー表示
+set guioptions+=b
