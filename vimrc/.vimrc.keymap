@@ -86,14 +86,6 @@ noremap <Leader><Leader> :up<CR>
 " ScrExpl
 " nnoremap <Leader>o :SrcExplToggle<CR>
 
-" nmap <Leader>p <Plug>(milfeulle-prev)
-" nmap <Leader>n <Plug>(milfeulle-next)
-
-" 前の変更場所に移動
-" noremap <Leader>h g;
-" 次の変更場所に移動
-" noremap <Leader>l g,
-
 " savevers.vim VersDiffから抜ける
 noremap <Leader>vq :VersDiff -c<CR>
 
@@ -120,8 +112,8 @@ vmap <Leader>l <Plug>(easymotion-w)
 nmap <Leader>h <Plug>(easymotion-b)
 vmap <Leader>h <Plug>(easymotion-b)
 
-nmap <Leader>; <Plug>(easymotion-jumptoanywhere)
-vmap <Leader>; <Plug>(easymotion-jumptoanywhere)
+" nmap <Leader>; <Plug>(easymotion-jumptoanywhere)
+" vmap <Leader>; <Plug>(easymotion-jumptoanywhere)
 
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -165,7 +157,7 @@ nmap <C-G> :vimgrep /<C-R><C-W>/j %
 " <F1> Vim Help
 " <F2>
 " <F3> カーソルがある行から [count] 個先の小文字のマークがある行の最初の非空白文字へ移動します。{Vi にはありません}
-nnoremap <F3> :<C-u>call <SID>AutoMarkrement_NextJump()<CR>
+" nnoremap <F3> :<C-u>call <SID>AutoMarkrement_NextJump()<CR>
 " <F4>
 
 " <F5> bufferlist.vim
