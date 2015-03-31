@@ -304,3 +304,5 @@ vmap ,, <Plug>NERDCommenterToggle
 "   強制保存して変更
 "   :Rename! newfilename
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
+
+filetype on

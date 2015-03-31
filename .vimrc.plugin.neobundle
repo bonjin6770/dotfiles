@@ -25,8 +25,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " My Bundles here:
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neosnippet.vim'
+" NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'yonchu/accelerated-smooth-scroll'
 NeoBundle 'klen/python-mode.git'
 NeoBundle 'tpope/vim-surround.git'
@@ -74,6 +74,18 @@ NeoBundle 'yuku-t/vim-ref-ri'
 NeoBundle 'tpope/vim-endwise'
 " NeoBundle 'xolox/vim-easytags'
 
+" Snippete
+if has('lua') && (( v:version == 703 && has('patch885')) || (v:version >= 704))
+  NeoBundle 'Shougo/neocomplete'
+else
+  NeoBundle 'Shougo/neocomplcache'
+endif
+NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/neosnippet-snippets"
+NeoBundle "honza/vim-snippets"
+NeoBundle "rcmdnk/vim-octopress-snippets"
+
+
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
             \ }
@@ -107,7 +119,6 @@ NeoBundle 'vim-scripts/CSApprox'
 
 "" Snippets
 " NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
 
 "" Color
 NeoBundle 'tomasr/molokai'
