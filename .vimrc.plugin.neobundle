@@ -55,7 +55,7 @@ NeoBundle 'vim-scripts/tagexplorer.vim'
 " NeoBundle 'vim-scripts/Changed'
 NeoBundle 'vim-scripts/closetag.vim'
 NeoBundle "osyo-manga/vim-milfeulle"
-NeoBundle "mhinz/vim-startify"
+" NeoBundle "mhinz/vim-startify"
 NeoBundle "terryma/vim-expand-region"
 NeoBundle "vim-scripts/savevers.vim"
 NeoBundle 'glidenote/memolist.vim'
