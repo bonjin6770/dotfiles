@@ -40,6 +40,10 @@ vnoremap > >gv
 map g; <Plug>(poslist-prev-pos)
 map g, <Plug>(poslist-next-pos)
 
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
+
 "*****************************************************************************
 " <leader>
 "*****************************************************************************
