@@ -84,7 +84,7 @@ endif
 NeoBundle "Shougo/neosnippet"
 NeoBundle "Shougo/neosnippet-snippets"
 NeoBundle "honza/vim-snippets"
-NeoBundle "rcmdnk/vim-octopress-snippets"
+" NeoBundle "rcmdnk/vim-octopress-snippets"
 
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
@@ -108,15 +108,15 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'
-" NeoBundle 'Shougo/vimproc.vim', {
-"       \ 'build' : {
-"       \     'windows' : 'tools\\update-dll-mingw',
-"       \     'cygwin' : 'make -f make_cygwin.mak',
-"       \     'mac' : 'make -f make_mac.mak',
-"       \     'unix' : 'make -f make_unix.mak',
-"       \    },
-"       \ }
-" NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/vimshell.vim'
 
 "" Snippets
 " NeoBundle 'SirVer/ultisnips'

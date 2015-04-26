@@ -306,3 +306,6 @@ vmap ,, <Plug>NERDCommenterToggle
 command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'), ':p')|exec 'f '.escape(<q-args>, ' ')|w<bang>|call delete(pbnr)
 
 filetype on
+
+
+

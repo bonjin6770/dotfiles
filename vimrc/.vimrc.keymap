@@ -164,8 +164,8 @@ nmap <C-G> :vimgrep /<C-R><C-W>/j %
 " nnoremap <F3> :<C-u>call <SID>AutoMarkrement_NextJump()<CR>
 " <F4>
 
-" <F5> bufferlist.vim
-map <silent> <F5> :call BufferList()<CR>
+" <F5>
+" map <silent> <F5> :NERDTree b:projectlocal_root_dir
 
 " <F6> SrcExpl.vim
 " nnoremap <F6> :SrcExplToggle<CR>
@@ -178,8 +178,7 @@ nnoremap <F7> :cprevious <CR>
 " <F8> 次の該当位置へジャンプ
 nnoremap <F8> :cnext <CR>
 
-" <F9> 現在開いているvimスクリプトファイルを実行
-" nnoremap <F9> :source %<CR>
+" <F9>
 
 " <F10>
 " noremap <F3> :NERDTreeToggle<CR>
@@ -195,11 +194,12 @@ nnoremap <F12> <C-]>
 " <S-F3>
 " カーソル位置より [count] 個前の小文字のマークへ移動します。{Vi にはありません}
 " nnoremap <silent> <S-F3> :NERDTreeFind<CR>
-nnoremap <S-F3> :<C-u>call <SID>AutoMarkrement_PreJump()<CR>
+" nnoremap <S-F3> :<C-u>call <SID>AutoMarkrement_PreJump()<CR>
 " <S-F4> Template
 nnoremap <S-F4> :Template<Space>
 " <S-F5>
-nmap <S-F5> :ls<CR>:b
+" nmap <S-F5> :ls<CR>:b
+map <silent> <S-F5> :call BufferList()<CR>
 " <S-F6>
 " <S-F7>  savevers.vim ひとつ前のバックアップと比較
 nnoremap <S-F7> :VersDiff -<CR>
