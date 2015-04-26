@@ -22,7 +22,7 @@ set list
  set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 
 if has('mac')
-  " set imdisable
+  set imdisable
 endif
 
 " 横スクロールバー表示
