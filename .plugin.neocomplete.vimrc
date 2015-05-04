@@ -103,7 +103,7 @@ if has('gui_macvim')
   " 日本語入力時、無効化
   let g:neocomplete#lock_iminsert = 1
 endif
-
+"
 " camle caseを有効化。大文字を区切りとしたワイルドカードのように振る舞う
 let g:neocomplete#enable_camel_case_completion = 1
 
