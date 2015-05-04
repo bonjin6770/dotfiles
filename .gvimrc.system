@@ -2,5 +2,5 @@
 set whichwrap=b,s,h,l,[,],<,>
 
 " 削除でレジスタに格納しない(ビジュアルモードでの選択後は格納する)
-nnoremap x "_x
-nnoremap dd "_dd
+" nnoremap x "_x
+" nnoremap dd "_dd
