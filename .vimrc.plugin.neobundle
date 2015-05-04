@@ -73,7 +73,7 @@ NeoBundle 'yuku-t/vim-ref-ri'
 " 自動で閉じる
 NeoBundle 'tpope/vim-endwise'
 " NeoBundle 'xolox/vim-easytags'
-NeoBundle 'supermomonga/projectlocal.vim'
+" NeoBundle 'supermomonga/projectlocal.vim'
 
 " Snippete
 if has('lua') && (( v:version == 703 && has('patch885')) || (v:version >= 704))
