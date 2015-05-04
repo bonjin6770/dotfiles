@@ -118,7 +118,7 @@ inoremap <expr><left> neocomplete#cancel_popup() . "\<left>"
 inoremap <expr><right> neocomplete#cancel_popup() . "\<right>"
 
 " 補完開始文字数
-let g:neocomplete#auto_completion_start_length = 2
+let g:neocomplete#auto_completion_start_length = 4
 
 "----------------------------------------
 " 以下、macvim対策で設定しなおした。
