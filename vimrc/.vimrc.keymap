@@ -40,8 +40,8 @@ vnoremap > >gv
 map g; <Plug>(poslist-prev-pos)
 map g, <Plug>(poslist-next-pos)
 
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+" nnoremap <Tab> gt
+" nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "*****************************************************************************
@@ -129,7 +129,18 @@ nmap <leader>s <Plug>(easymotion-s)
 " Need one more keystroke, but on average, it may be more comfortable.
 " nmap <leader>s <Plug>(easymotion-s2)
 
-
+" Quickfixウィンドウの開閉をトグルするAdd Star
+function! s:toggle_quickfix_window()
+  for _ in range(1, winnr('$'))
+    execute _ . 'wincmd w'
+    if &l:filetype ==# 'qf'
+      close
+      return
+    endif
+  endfor
+  cwindow
+endfunction
+nnoremap <silent> <Leader>9 :<C-u>call <SID>toggle_quickfix_window()<CR>
 "=============================================================================
 " The prefix key.
 "=============================================================================
