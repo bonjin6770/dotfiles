@@ -2,8 +2,29 @@
 "    Description: .vimrc
 "         Author: bonjin6770(twitter:bonjin6770)
 "=============================================================================
-" " 初期化
-source ~/dotfiles/vimrc/.vimrc.init
+
+"----------------------------------------
+" 初期化
+"----------------------------------------
+set nocompatible
+set encoding=utf-8
+scriptencoding unix
+"----------------------------------------
+" 初期化 > ユーザーランタイムパス設定
+"----------------------------------------
+if isdirectory($HOME . '/.vim')
+  let $MY_VIMRUNTIME = $HOME.'/.vim'
+elseif isdirectory($HOME . '\vimfiles')
+  let $MY_VIMRUNTIME = $HOME.'\vimfiles'
+elseif isdirectory($VIM . '\vimfiles')
+  let $MY_VIMRUNTIME = $VIM.'\vimfiles'
+endif
+
+"----------------------------------------
+" 初期化 > 内部エンコーディング指定
+"----------------------------------------
+silent! source $MY_VIMRUNTIME/pluginjp/encode.vim
+
 
 " vim-bootstrap
 source $HOME/dotfiles/.vimrc.vim-bootstrap
@@ -222,11 +243,6 @@ function! s:hl_cword()
     let b:highlight_cursor_word = word
 endfunction
 
-" ctrlp.vim
-" let g:ctrlp_map = '<s-c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-
-
 " cscope
 if has("cscope")
   set csprg=/usr/local/bin/cscope
@@ -252,51 +268,6 @@ let g:SrcExpl_GoBackMapKey  = "<C-b>"
 let NERDSpaceDelims = 1
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
-
-" 目指す構造化！
-" " 初期化
-" source ~/dotfiles/vimrc/.vimrc.init
-"
-" " NeoBundle設定
-" source ~/dotfiles/vimrc/.vimrc.bundle
-"
-" " 基本設定
-" source ~/dotfiles/vimrc/.vimrc.basic
-"
-" " 文字コード設定
-" source ~/dotfiles/vimrc/.vimrc.encoding
-"
-" " 表示設定
-" source ~/dotfiles/vimrc/.vimrc.appearance
-"
-" " カラースキーマ設定
-" source ~/dotfiles/vimrc/.vimrc.colorscheme
-"
-" " インデント設定
-" source ~/dotfiles/vimrc/.vimrc.indent
-"
-" " 検索設定
-" source ~/dotfiles/vimrc/.vimrc.search
-"
-" " キーマッピング設定
-" source ~/dotfiles/vimrc/.vimrc.keymap
-"
-" " ファイルタイプ設定
-" source ~/dotfiles/vimrc/.vimrc.filetype
-"360
-" " プラグイン設定
-" source ~/dotfiles/vimrc/.vimrc.plugin
-
-" ローカル設定
-" source ~/dotfiles/vimrc/.vimrc.local
-
-" --------------------------------
-" rubocop
-" --------------------------------
-" syntastic_mode_mapをactiveにするとバッファ保存時にsyntasticが走る
-" active_filetypesに、保存時にsyntasticを走らせるファイルタイプを指定する
-" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
-" let g:syntastic_ruby_checkers = ['rubocop']
 
 " 現在編集中のバッファのファイル名を変更する
 " usage
