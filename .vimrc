@@ -251,9 +251,9 @@ endif
 " gvimの色テーマは.gvimrcで指定する
 colorscheme darkblue
 
-""""""""""""""""""""""""""""""
-" 全角スペースを表示
-""""""""""""""""""""""""""""""
+"----------------------------------------
+" 表示設定 > 全角スペースを表示
+"----------------------------------------
 function! s:GetHighlight(hi)
   redir => hl
   exec 'highlight '.a:hi
@@ -290,31 +290,142 @@ nnoremap <S-Right> <C-w>><CR>
 nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " 自動補完設定
-source $HOME/dotfiles/.auto_completion.vimrc
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " 検索設定
-source $HOME/dotfiles/.vimrc.search
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+" 検索の時に大文字小文字を区別しない
+set ignorecase
+" 大文字小文字の両方が含まれている場合は大文字小文字を区別する
+set smartcase
+" 検索時にファイルの最後まで行ったら最初に戻る
+set wrapscan
+" インクリメンタルサーチ
+set incsearch
+" 検索文字の強調表示
+set hlsearch
+" w,bの移動で認識する文字
+" set iskeyword=a-z,A-Z,48-57,_,.,-,>
+" vimgrep をデフォルトのgrepとする場合internal
+" set grepprg=internal
 
+" カーソル下の単語を * で検索
+vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
+
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " ステータスライン
-source $HOME/dotfiles/.vimrc.statusline
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+set laststatus=2 " 常にステータスラインを表示
 
+" カーソルが何行目の馴れ爪に置かれているかを表示する
+set ruler
+
+"ステータスラインに文字コードと改行文字を表示する
+" if winwidth(0) >= 120
+  " set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %{g:HahHah()}\ %F%=[%{GetB()}]\ %{fugitive#statusline()}\ %l,%c%V%8P
+" else
+  " set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %{g:HahHah()}\ %f%=[%{GetB()}]\ %{fugitive#statusline()}\ %l,%c%V%8P
+" endif
+
+"----------------------------------------
+" 挿入モード時、ステータスラインのカラー変更
+"----------------------------------------
+" augroup InsertHook
+" autocmd!
+" autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=cyan
+" autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
+" augroup END
+let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
+
+"----------------------------------------
+" ステータスラインに文字コード等表示
+" iconvが使用可能の場合、カーソル上の文字コードをエンコードに応じた表示にするFencB()を使用
+"----------------------------------------
+if has('iconv')
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=[0x%{FencB()}]\ (%v,%l)/%L%8P\
+else
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v,%l)/%L%8P\
+endif
+
+" FencB() : カーソル上の文字コードをエンコードに応じた表示にする
+function! FencB()
+  let c = matchstr(getline('.'), '.', col('.') - 1)
+  let c = iconv(c, &enc, &fenc)
+  return s:Byte2hex(s:Str2byte(c))
+endfunction
+
+function! s:Str2byte(str)
+  return map(range(len(a:str)), 'char2nr(a:str[v:val])')
+endfunction
+
+function! s:Byte2hex(bytes)
+  return join(map(copy(a:bytes), 'printf("%02X", v:val)'), '')
+endfunction
+
+if has('syntax')
+  augroup InsertHook
+    autocmd!
+    autocmd InsertEnter * call s:StatusLine('Enter')
+    autocmd InsertLeave * call s:StatusLine('Leave')
+  augroup END
+endif
+" if has('unix') && !has('gui_running')
+"   " ESCですぐに反映されない対策
+"   inoremap <silent> <ESC> <ESC>
+" endif
+
+let s:slhlcmd = ''
+function! s:StatusLine(mode)
+  if a:mode == 'Enter'
+    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+    silent exec g:hi_insert
+  else
+    highlight clear StatusLine
+    silent exec s:slhlcmd
+    redraw
+  endif
+endfunction
+
+function! s:GetHighlight(hi)
+  redir => hl
+  exec 'highlight '.a:hi
+  redir END
+  let hl = substitute(hl, '[\r\n]', '', 'g')
+  let hl = substitute(hl, 'xxx', '', '')
+  return hl
+endfunction
+
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " タグ設定
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/dotfiles/.vimrc.tags
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " diff設定
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/dotfiles/.vimrc.diff
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " 辞書設定
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/dotfiles/.dictionary.vimrc
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " 短縮入力設定
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/dotfiles/.vimrc.abbreviations
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " シンタックスハイライト
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/dotfiles/.vimrc.syntax
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " プラグイン設定
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/dotfiles/.vimrc.plugin.neobundle
 source $HOME/dotfiles/.plugin.neocomplete.vimrc
 source $HOME/dotfiles/.vimrc.plugin.neosnippet
@@ -334,7 +445,9 @@ source $VIMRUNTIME/macros/matchit.vim
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.matchit
 source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.memolist
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " テンプレート
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 let g:sonictemplate_vim_template_dir = '$HOME/dotfiles/template'
 let g:sonictemplate_vim_template_dir = '~/dotfiles/template'
 " let g:sonictemplate_vim_template_dir = [
@@ -342,17 +455,23 @@ let g:sonictemplate_vim_template_dir = '~/dotfiles/template'
 " \ '$HOME/dotfiles/template'
 " \]
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " ローカル設定
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 if filereadable(expand("~/dotfiles/vimrc/.vimrc.local"))
   source ~/dotfiles/vimrc/.vimrc.local
 endif
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " mac用設定
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 if has('mac')
   " source $HOME/dotfiles/.vimrc.mac
 endif
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " key map
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source ~/dotfiles/vimrc/.vimrc.keymap
 
 " let g:pymode_rope_complete_on_dot = 0
@@ -535,4 +654,6 @@ augroup MyXML
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
+
+
 
