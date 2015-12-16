@@ -3,9 +3,9 @@
 "         Author: bonjin6770(twitter:bonjin6770)
 "=============================================================================
 
-"----------------------------------------
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " 初期化
-"----------------------------------------
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 set nocompatible
 set encoding=utf-8
 scriptencoding unix
@@ -25,24 +25,270 @@ endif
 "----------------------------------------
 silent! source $MY_VIMRUNTIME/pluginjp/encode.vim
 
-
 " vim-bootstrap
 source $HOME/dotfiles/.vimrc.vim-bootstrap
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " システム設定
-source $HOME/dotfiles/.vimrc.system
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-" 移動関連
-source $HOME/dotfiles/.vimrc.moving
+"----------------------------------------
+" システム設定 > バックアップファイル
+"----------------------------------------
+" ファイルの上書きの前にバックアップを作る/作らない
+" set writebackupを指定してもオプション 'backup' がオンでない限り、
+" バックアップは上書きに成功した後に削除される。
+set nowritebackup
+" バックアップ/スワップファイルを作成する/しない
+set nobackup
+set noswapfile
 
+"----------------------------------------
+" システム設定 > アンドゥ
+"----------------------------------------
+if version >= 703
+  " 再読込、vim終了後も継続するアンドゥ(7.3)
+  set undofile
+  " アンドゥの保存場所(7.3)
+  set undodir=.
+endif
+
+"----------------------------------------
+" システム設定 > viminfo
+"----------------------------------------
+" viminfoを作成しない
+set viminfo=
+
+"----------------------------------------
+" システム設定 > クリップボード
+"----------------------------------------
+" クリップボードを共有
+set clipboard+=unnamed,autoselect
+
+"----------------------------------------
+" システム設定 > バッファ
+"----------------------------------------
+" 編集結果非保存のバッファから、新しいバッファを開くときに警告を出さない
+set hidden
+
+"----------------------------------------
+" システム設定 > その他
+"----------------------------------------
+" 8進数を無効にする。<C-a>,<C-x>に影響する
+set nrformats-=octal
+" キーコードやマッピングされたキー列が完了するのを待つ時間(ミリ秒)
+set timeout timeoutlen=3000 ttimeoutlen=100
+" ヒストリの保存数
+set history=50
+" 日本語の行の連結時には空白を入力しない
+set formatoptions+=mM
+" コマンドライン補完するときに強化されたものを使う
+set wildmenu
+" マウスを有効にする
+if has('mouse')
+  set mouse=a
+endif
+" pluginを使用可能にする
+filetype plugin indent on
+
+" close winodw with save
+noremap <leader>x :w<CR>
+noremap <leader>X :wq<CR>
+
+" close Window
+noremap <leader>z :q<CR>
+noremap <leader>Z :q!<CR>
+
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+" カーソル移動
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"----------------------------------------
+" カーソル移動 > カーソル位置の単語をyankする
+"----------------------------------------
+nnoremap vy vawy
+"----------------------------------------
+" カーソル移動 > Visual blockモードでフリーカーソルを有効にする
+"----------------------------------------
+set virtualedit+=block
+"----------------------------------------
+" カーソル移動 > ビジュアルモード時vで行末まで選択
+"----------------------------------------
+vnoremap v $h
+"----------------------------------------
+" カーソル移動 > カーソルキーで行末／行頭の移動可能に設定
+"----------------------------------------
+set whichwrap=b,s,h,l,[,],<,>
+"----------------------------------------
+" カーソル移動 >  バックスペースでインデントや改行を削除できるようにする
+"----------------------------------------
+set backspace=indent,eol,start
+"----------------------------------------
+" カーソル移動 >  □や○の文字があってもカーソル位置がずれないようにする
+"----------------------------------------
+set ambiwidth=double
+
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " インデント
-source $HOME/dotfiles/.vimrc.indent
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+set autoindent   " 自動でインデント
+"set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
+set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
+set cindent      " Cプログラムファイルの自動インデントを始める
 
-" ファイル操作
-source $HOME/dotfiles/.vimrc.file
+" softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
+set tabstop=4 shiftwidth=4 softtabstop=0
 
+if has("autocmd")
+  "ファイルタイプの検索を有効にする
+  filetype plugin on
+  "そのファイルタイプにあわせたインデントを利用する
+  filetype indent on
+  " これらのftではインデントを無効に
+  "autocmd FileType php filetype indent off
+
+  autocmd FileType apache     setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType aspvbs     setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType ruby       setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType vb         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType wsh        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType pascal     setlocal sw=2 sts=0 ts=2 et
+endif
+
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+" 履歴管理
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"----------------------------------------
+" 履歴管理 > 編集履歴を保存して終了する
+"----------------------------------------
+if has('persistent_undo')
+    if ! isdirectory($HOME.'/.vim/undo')
+        call mkdir($HOME.'/.vim/undo', 'p')
+    endif
+    set undodir=~/.vim/undo
+    set undofile
+endif
+
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " 表示設定
-source $HOME/dotfiles/.vimrc.apperance
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+set showmatch         " 括弧の対応をハイライト
+set number            " 行番号表示
+set list              " 不可視文字表示
+" set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
+" デフォルト不可視文字は美しくないのでUnicodeで綺麗に
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set display=uhex      " 印字不可能文字を16進数で表示
+" カーソル行をハイライト
+set cursorline
+
+" カレントウィンドウにのみ罫線を引く
+augroup cch
+  autocmd! cch
+  autocmd WinLeave * set nocursorline
+  autocmd WinEnter,BufRead * set cursorline
+augroup END
+
+" スプラッシュ(起動時のメッセージ)を表示しない
+" set shortmess+=I
+" エラー時の音とビジュアルベルの抑制(gvimは.gvimrcで設定)
+set noerrorbells
+set novisualbell
+set visualbell t_vb=
+" マクロ実行中などの画面再描画を行わない
+set lazyredraw
+" Windowsでディレクトリパスの区切り文字表示に / を使えるようにする
+set shellslash
+
+" 行番号表示
+set number
+" 括弧の対応表示時間
+set showmatch matchtime=1
+" タブを設定
+" set ts=4 sw=4 sts=4
+" Cインデントの設定
+set cinoptions+=:0
+" タイトルを表示
+set title
+" コマンドラインの高さ (gvimはgvimrcで指定)
+" set cmdheight=2
+set laststatus=2
+" コマンドをステータス行に表示
+set showcmd
+" 画面最後の行をできる限り表示する
+set display=lastline
+" Tab、行末の半角スペースを明示的に表示する
+set list
+set listchars=tab:^\ ,trail:~
+
+" ハイライトを有効にする
+if &t_Co > 2 || has('gui_running')
+  syntax on
+endif
+
+" 色テーマ設定
+" gvimの色テーマは.gvimrcで指定する
+colorscheme darkblue
+
+""""""""""""""""""""""""""""""
+" 全角スペースを表示
+""""""""""""""""""""""""""""""
+function! s:GetHighlight(hi)
+  redir => hl
+  exec 'highlight '.a:hi
+  redir END
+  let hl = substitute(hl, '[\r\n]', '', 'g')
+  let hl = substitute(hl, 'xxx', '', '')
+  return hl
+endfunction
+
+" コメント以外で全角スペースを指定しているので、scriptencodingと、
+" このファイルのエンコードが一致するよう注意！
+" 強調表示されない場合、ここでscriptencodingを指定するとうまくいく事があります。
+" scriptencoding cp932
+function! ZenkakuSpace()
+  silent! let hi = s:GetHighlight('ZenkakuSpace')
+  if hi =~ 'E411' || hi =~ 'cleared$'
+    highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
+  endif
+endfunction
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme       * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  augroup END
+  call ZenkakuSpace()
+endif
+
+set nowrap                " 長いテキストの折り返し無効
+
+" Shift + 矢印でウィンドウサイズを変更
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
 
 " 自動補完設定
 source $HOME/dotfiles/.auto_completion.vimrc
@@ -67,7 +313,6 @@ source $HOME/dotfiles/.vimrc.abbreviations
 
 " シンタックスハイライト
 source $HOME/dotfiles/.vimrc.syntax
-
 
 " プラグイン設定
 source $HOME/dotfiles/.vimrc.plugin.neobundle
@@ -164,20 +409,20 @@ set ignorecase
 " set hlsearch
 "
 " " -------------------------------------------------------------------
-" " vim-anzu関連 {{{
-" "
-" " キーマップ設定
+" vim-anzu関連 {{{
+
+" " " キーマップ設定
 " nmap n <Plug>(anzu-jump-n)zz
 " nmap N <Plug>(anzu-N)zz
 " nmap * <Plug>(anzu-star)
 " nmap # <Plug>(anzu-sharp)
 " " ESC2回押しで検索ハイライトを消去
 " nmap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
-"   \ <Plug>(anzu-clear-search-status)
-"   \ <Plug>(quickhl-manual-reset)
+  " \ <Plug>(anzu-clear-search-status)
+  " \ <Plug>(quickhl-manual-reset)
 " " format = (該当数/全体数)
 " let g:anzu_status_format = "(%i/%l)"
-" "}}}
+" }}}
 "
 "
 " " -------------------------------------------------------------------
@@ -197,11 +442,11 @@ let g:enable_highlight_cursor_word = 1
 
 augroup highlight-cursor-word
     autocmd!
-    autocmd CursorMoved * call s:hl_cword()
+    " autocmd CursorMoved * call s:hl_cword()
     " カーソル移動が重くなったと感じるようであれば
     " CursorMoved ではなくて
     " CursorHold を使用する
-"     autocmd CursorHold * call s:hl_cword()
+    autocmd CursorHold * call s:hl_cword()
     " 単語のハイライト設定
     autocmd ColorScheme * highlight CursorWord guifg=Red
     " アンダーラインでハイライトを行う場合
@@ -278,5 +523,16 @@ command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'),
 
 filetype on
 
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+" 言語別設定
+"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+"----------------------------------------
+" 言語別設定 > XML
+"----------------------------------------
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+augroup END
 
