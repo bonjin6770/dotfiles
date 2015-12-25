@@ -248,7 +248,7 @@ let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore
 let g:ctrlp_use_caching = 0
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 " noremap <leader>b :CtrlPBuffer<CR>
-noremap ;ls :CtrlPBuffer<CR>
+noremap <leader>ls :CtrlPBuffer<CR>
 let g:ctrlp_map = ',e'
 let g:ctrlp_open_new_file = 'r'
 
@@ -519,7 +519,7 @@ augroup cch
 augroup END
 
 " スプラッシュ(起動時のメッセージ)を表示しない
-" set shortmess+=I
+set shortmess+=I
 " エラー時の音とビジュアルベルの抑制(gvimは.gvimrcで設定)
 set noerrorbells
 set novisualbell
@@ -777,7 +777,154 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "=============================================================================
 " プラグイン設定
 "=============================================================================
-source $HOME/dotfiles/.vimrc.plugin.neobundle
+" -------------------------------------------------------------------
+" プラグイン設定 > neobundle
+" -------------------------------------------------------------------
+if has('vim_starting')
+  " Be iMproved
+  set nocompatible
+  " neobundle.vimをインストールしたディレクトリを指定
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplete'
+" NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'yonchu/accelerated-smooth-scroll'
+" NeoBundle 'klen/python-mode.git'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'vim-scripts/SingleCompile'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle "t9md/vim-quickhl"
+NeoBundle 'vim-scripts/ctags.vim'
+NeoBundle 'vim-scripts/mru.vim'
+NeoBundle "Shougo/unite-outline"
+NeoBundle 'vim-scripts/vimdir.vim'
+NeoBundle 'vim-scripts/ReplaceWithSameIndentRegister'
+" NeoBundle 'vim-scripts/ShowWhiteSpace'
+NeoBundle 'vim-scripts/exjumplist'
+NeoBundle 'vim-scripts/YankRing.vim'
+NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'vim-scripts/bufferlist.vim'
+NeoBundle 'wesleyche/SrcExpl'
+NeoBundle 'taglist.vim'
+" NeoBundle 'Source-Explorer-srcexpl.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'vim-scripts/FavEx'
+NeoBundle 'mattn/sonictemplate-vim'
+NeoBundle 'vim-scripts/tagexplorer.vim'
+" NeoBundle 'vim-scripts/Changed'
+NeoBundle 'vim-scripts/closetag.vim'
+NeoBundle "osyo-manga/vim-milfeulle"
+" NeoBundle "mhinz/vim-startify"
+NeoBundle "terryma/vim-expand-region"
+NeoBundle "vim-scripts/savevers.vim"
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'fuenor/qfixgrep'
+NeoBundle 'thinca/vim-poslist'
+" NeoBundle 'vim-scripts/ShowMarks'
+NeoBundle 'vim-scripts/Visual-Mark'
+" NeoBundle 'jacquesbh/vim-showmarks'
+NeoBundle 'vim-scripts/BufOnly.vim'
+" ドキュメント参照
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
+" NeoBundle 'szw/vim-tags'
+" 自動で閉じる
+NeoBundle 'tpope/vim-endwise'
+" NeoBundle 'xolox/vim-easytags'
+" NeoBundle 'supermomonga/projectlocal.vim'
+
+" Snippete
+if has('lua') && (( v:version == 703 && has('patch885')) || (v:version >= 704))
+  NeoBundle 'Shougo/neocomplete'
+else
+  NeoBundle 'Shougo/neocomplcache'
+endif
+NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/neosnippet-snippets"
+NeoBundle "honza/vim-snippets"
+" NeoBundle "rcmdnk/vim-octopress-snippets"
+
+
+NeoBundleLazy 'vim-jp/cpp-vim', {
+            \ 'autoload' : {'filetypes' : 'cpp'}
+            \ }
+NeoBundleLazy 'osyo-manga/vim-stargate', {
+            \ 'autoload' : {'filetypes' : 'cpp'}
+            \ }
+
+NeoBundle 'vim-scripts/delphi.vim'
+
+" FOR C++
+NeoBundle 'vim-scripts/Switch-cpp-header-files'
+
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'bling/vim-airline'
+" NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'vim-scripts/grep.vim'
+NeoBundle 'vim-scripts/CSApprox'
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/vimshell.vim'
+
+"" Snippets
+" NeoBundle 'SirVer/ultisnips'
+
+"" Color
+NeoBundle 'tomasr/molokai'
+
+"" Python Bundle
+NeoBundle "davidhalter/jedi-vim"
+NeoBundle "scrooloose/syntastic"
+NeoBundle "majutsushi/tagbar"
+" NeoBundle "Yggdroot/indentLine"
+
+"" C Bundle
+NeoBundle 'vim-scripts/c.vim'
+
+
+"" HTML Bundle
+""NeoBundle 'amirh/HTML-AutoCloseTag'
+" NeoBundle 'hail2u/vim-css3-syntax'
+" NeoBundle 'gorodinskiy/vim-coloresque'
+" NeoBundle 'tpope/vim-haml'
+
+"" PHP Bundle
+NeoBundle 'arnaud-lb/vim-php-namespace'
+
+"" Javascript Bundle
+NeoBundle "scrooloose/syntastic"
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+NeoBundleCheck
+
 source $HOME/dotfiles/.plugin.neocomplete.vimrc
 source $HOME/dotfiles/.vimrc.plugin.neosnippet
 source $HOME/dotfiles/.plugin.jedi_vim.vimrc
