@@ -1447,5 +1447,7 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-
-
+" 非GUI日本語コンソールを使っている場合の設定
+if !has('gui_running') && &encoding != 'cp932' && &term == 'win32'
+  set termencoding=cp932
+endif
