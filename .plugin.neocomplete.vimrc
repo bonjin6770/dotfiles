@@ -15,11 +15,23 @@ let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 " 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 " neocompleteを自動的にロックするバッファ名のパターン
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Plugin key-mappings.
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+"大文字小文字を区切りとしたあいまい検索を行うかどうか。
+"DTと入力するとD*T*と解釈され、DateTime等にマッチする。
+" let g:neocomplcache_enable_camel_case_completion = 0
+"日本語を補完候補として取得しないようにする
+" let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+"C-gで補完を元に戻す
+" inoremap <expr><C-g> neocomplcache#undo_completion()
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
@@ -35,8 +47,8 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -48,13 +60,13 @@ function! s:my_cr_function()
 endfunction
 
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y>  neocomplete#close_popup()
+" inoremap <expr><C-e>  neocomplete#cancel_popup()
 " Close popup by <Space>
 " pumvisibleは、neocompleteの補完メニューが出ているかどうかを判定してくれます
 " inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
@@ -108,17 +120,17 @@ endif
 let g:neocomplete#enable_camel_case_completion = 1
 
 " _(アンダーバー)区切りの補完を有効化
-let g:neocomplete#enable_underbar_completion = 1
+" let g:neocomplete#enable_underbar_completion = 1
 
 " シンタックスをキャッシュするときの最小文字長
-let g:neocomplete#min_syntax_length = 1
+let g:neocomplete#min_syntax_length = 3
 
 " 補完をキャンセルしてカーソル移動(ここらへんはご自由に！)
 inoremap <expr><left> neocomplete#cancel_popup() . "\<left>"
 inoremap <expr><right> neocomplete#cancel_popup() . "\<right>"
 
 " 補完開始文字数
-let g:neocomplete#auto_completion_start_length = 4
+let g:neocomplete#auto_completion_start_length = 2
 
 "----------------------------------------
 " 以下、macvim対策で設定しなおした。
@@ -127,21 +139,19 @@ let g:neocomplete#auto_completion_start_length = 4
 
 " 補完をキャンセルしpopupを閉じる
 inoremap <expr><C-e> neocomplete#cancel_popup()
-inoremap <expr><C-TAB> pumvisible() ? neocomplete#cancel_popup() : "\<C-TAB>"
+" inoremap <expr><C-TAB> pumvisible() ? neocomplete#cancel_popup() : "\<C-TAB>"
 
 " TABで補完できるようにする
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" undo
-inoremap <expr><C-g> neocomplete#undo_completion()
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " 補完候補の共通部分までを補完する
-inoremap <expr><C-s> neocomplete#complete_common_string()
+" inoremap <expr><C-s> neocomplete#complete_common_string()
 
 " C-nでneocomplete補完
-inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+" inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 
 " C-pでkeyword補完
-inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
+" inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 
 " 補完候補が出ていたら確定、なければ改行
 " vim-endwiseのプラグインとバッティング。enterを押すと変な文字が入力されてしまう。
