@@ -141,7 +141,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 "*****************************************************************************
 "" Abbreviations
+let s:settings_abbreviations = 'abbreviations'
 "*****************************************************************************
+
 "" no one is really happy until you have this shortcuts
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
@@ -212,7 +214,9 @@ set autoread
 
 "*****************************************************************************
 "" Mappings
+let s:settings_mappings = ''
 "*****************************************************************************
+
 "" Split
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
@@ -248,7 +252,7 @@ let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore
 let g:ctrlp_use_caching = 0
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 " noremap <leader>b :CtrlPBuffer<CR>
-noremap ;ls :CtrlPBuffer<CR>
+noremap <leader>ls :CtrlPBuffer<CR>
 let g:ctrlp_map = ',e'
 let g:ctrlp_open_new_file = 'r'
 
@@ -336,9 +340,10 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"*****************************************************************************
 " システム設定
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+let s:settings_system = ''
+"*****************************************************************************
 
 "----------------------------------------
 " システム設定 > バックアップファイル
@@ -407,9 +412,10 @@ noremap <leader>X :wq<CR>
 noremap <leader>z :q<CR>
 noremap <leader>Z :q!<CR>
 
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"*****************************************************************************
 " カーソル移動
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+let s:settings_mouse_coursor = ''
+"*****************************************************************************
 "----------------------------------------
 " カーソル移動 > カーソル位置の単語をyankする
 "----------------------------------------
@@ -435,9 +441,10 @@ set backspace=indent,eol,start
 "----------------------------------------
 set ambiwidth=double
 
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"*****************************************************************************
 " インデント
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+let s:settings_indent = ''
+"*****************************************************************************
 set autoindent   " 自動でインデント
 "set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
@@ -483,9 +490,10 @@ if has("autocmd")
   autocmd FileType pascal     setlocal sw=2 sts=0 ts=2 et
 endif
 
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"*****************************************************************************
 " 履歴管理
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+let s:settings_history = ''
+"*****************************************************************************
 "----------------------------------------
 " 履歴管理 > 編集履歴を保存して終了する
 "----------------------------------------
@@ -497,9 +505,10 @@ if has('persistent_undo')
     set undofile
 endif
 
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"*****************************************************************************
 " 表示設定
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+let settings_todo_view = ''
+"*****************************************************************************
 
 set showmatch         " 括弧の対応をハイライト
 set number            " 行番号表示
@@ -519,7 +528,7 @@ augroup cch
 augroup END
 
 " スプラッシュ(起動時のメッセージ)を表示しない
-" set shortmess+=I
+set shortmess+=I
 " エラー時の音とビジュアルベルの抑制(gvimは.gvimrcで設定)
 set noerrorbells
 set novisualbell
@@ -602,9 +611,10 @@ nnoremap <S-Down>  <C-w>+<CR>
 " 自動補完設定
 "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"*****************************************************************************
 " 検索設定
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+let s:settings_search = ''
+"*****************************************************************************
 " 検索の時に大文字小文字を区別しない
 set ignorecase
 " 大文字小文字の両方が含まれている場合は大文字小文字を区別する
@@ -623,9 +633,18 @@ set hlsearch
 " カーソル下の単語を * で検索
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
 
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"*****************************************************************************
+" 置換設定
+let s:settings_replace = ''
+"*****************************************************************************
+" s*でカーソル下のキーワードを置換
+nnoremap <expr> s* ':%s/\<' . expand('<cword>') . '\>/'
+vnoremap <expr> s* ':s/\<' . expand('<cword>') . '\>/'
+
+"*****************************************************************************
 " ステータスライン
-"|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+let s:settings_status_line = ''
+"*****************************************************************************
 set laststatus=2 " 常にステータスラインを表示
 
 " カーソルが何行目の馴れ爪に置かれているかを表示する
@@ -777,6 +796,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "=============================================================================
 " プラグイン設定
 "=============================================================================
+<<<<<<< HEAD
 source $HOME/dotfiles/.vimrc.plugin.neobundle
 " source $HOME/dotfiles/.plugin.neocomplete.vimrc
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -850,6 +870,157 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+=======
+" -------------------------------------------------------------------
+" プラグイン設定 > neobundle
+" -------------------------------------------------------------------
+if has('vim_starting')
+  " Be iMproved
+  set nocompatible
+  " neobundle.vimをインストールしたディレクトリを指定
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplete'
+" NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'yonchu/accelerated-smooth-scroll'
+" NeoBundle 'klen/python-mode.git'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'vim-scripts/SingleCompile'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle "t9md/vim-quickhl"
+NeoBundle 'vim-scripts/ctags.vim'
+NeoBundle 'vim-scripts/mru.vim'
+NeoBundle "Shougo/unite-outline"
+NeoBundle 'vim-scripts/vimdir.vim'
+NeoBundle 'vim-scripts/ReplaceWithSameIndentRegister'
+" NeoBundle 'vim-scripts/ShowWhiteSpace'
+NeoBundle 'vim-scripts/exjumplist'
+NeoBundle 'vim-scripts/YankRing.vim'
+NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'vim-scripts/bufferlist.vim'
+NeoBundle 'wesleyche/SrcExpl'
+NeoBundle 'taglist.vim'
+" NeoBundle 'Source-Explorer-srcexpl.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'vim-scripts/FavEx'
+NeoBundle 'mattn/sonictemplate-vim'
+NeoBundle 'vim-scripts/tagexplorer.vim'
+" NeoBundle 'vim-scripts/Changed'
+NeoBundle 'vim-scripts/closetag.vim'
+NeoBundle "osyo-manga/vim-milfeulle"
+" NeoBundle "mhinz/vim-startify"
+NeoBundle "terryma/vim-expand-region"
+NeoBundle "vim-scripts/savevers.vim"
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'fuenor/qfixgrep'
+NeoBundle 'thinca/vim-poslist'
+" NeoBundle 'vim-scripts/ShowMarks'
+NeoBundle 'vim-scripts/Visual-Mark'
+" NeoBundle 'jacquesbh/vim-showmarks'
+NeoBundle 'vim-scripts/BufOnly.vim'
+" ドキュメント参照
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
+" NeoBundle 'szw/vim-tags'
+" 自動で閉じる
+NeoBundle 'tpope/vim-endwise'
+" NeoBundle 'xolox/vim-easytags'
+" NeoBundle 'supermomonga/projectlocal.vim'
+
+" Snippete
+if has('lua') && (( v:version == 703 && has('patch885')) || (v:version >= 704))
+  NeoBundle 'Shougo/neocomplete'
+else
+  NeoBundle 'Shougo/neocomplcache'
+endif
+NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/neosnippet-snippets"
+NeoBundle "honza/vim-snippets"
+" NeoBundle "rcmdnk/vim-octopress-snippets"
+
+
+NeoBundleLazy 'vim-jp/cpp-vim', {
+            \ 'autoload' : {'filetypes' : 'cpp'}
+            \ }
+NeoBundleLazy 'osyo-manga/vim-stargate', {
+            \ 'autoload' : {'filetypes' : 'cpp'}
+            \ }
+
+NeoBundle 'vim-scripts/delphi.vim'
+
+" FOR C++
+NeoBundle 'vim-scripts/Switch-cpp-header-files'
+
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'bling/vim-airline'
+" NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'vim-scripts/grep.vim'
+NeoBundle 'vim-scripts/CSApprox'
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/vimshell.vim'
+
+"" Snippets
+" NeoBundle 'SirVer/ultisnips'
+
+"" Color
+NeoBundle 'tomasr/molokai'
+
+"" Python Bundle
+NeoBundle "davidhalter/jedi-vim"
+NeoBundle "scrooloose/syntastic"
+NeoBundle "majutsushi/tagbar"
+" NeoBundle "Yggdroot/indentLine"
+
+"" C Bundle
+NeoBundle 'vim-scripts/c.vim'
+
+
+"" HTML Bundle
+""NeoBundle 'amirh/HTML-AutoCloseTag'
+" NeoBundle 'hail2u/vim-css3-syntax'
+" NeoBundle 'gorodinskiy/vim-coloresque'
+" NeoBundle 'tpope/vim-haml'
+
+"" PHP Bundle
+NeoBundle 'arnaud-lb/vim-php-namespace'
+
+"" Javascript Bundle
+NeoBundle "scrooloose/syntastic"
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+NeoBundleCheck
+
+source $HOME/dotfiles/.plugin.neocomplete.vimrc
+>>>>>>> 8dba35ea4686111b0eb371d1da6067826f202e1e
 source $HOME/dotfiles/.vimrc.plugin.neosnippet
 source $HOME/dotfiles/.plugin.jedi_vim.vimrc
 source $HOME/dotfiles/.plugin.pymode.vimrc
@@ -1352,5 +1523,7 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-
-
+" 非GUI日本語コンソールを使っている場合の設定
+if !has('gui_running') && &encoding != 'cp932' && &term == 'win32'
+  set termencoding=cp932
+endif
