@@ -251,8 +251,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_use_caching = 0
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-" noremap <leader>b :CtrlPBuffer<CR>
-noremap <leader>ls :CtrlPBuffer<CR>
+" noremap <leader>p :CtrlPBuffer<CR>
+" noremap <leader>ls :CtrlPBuffer<CR>
 let g:ctrlp_map = ',e'
 let g:ctrlp_open_new_file = 'r'
 
@@ -1186,32 +1186,32 @@ map <Leader>'g  :MemoGrep<CR>
 " JK motions: Line motions
 "# keep cursor colum JK motion
 let g:EasyMotion_startofline = 0
-" nmap <Leader>j <Plug>(easymotion-j)
-" vmap <Leader>j <Plug>(easymotion-j)
-" nmap <Leader>k <Plug>(easymotion-k)
-" vmap <Leader>k <Plug>(easymotion-k)
-" nmap <Leader>j <Plug>(easymotion-sol-j)
-" vmap <Leader>j <Plug>(easymotion-sol-j
-" nmap <Leader>k <Plug>(easymotion-sol-k)
-" vmap <Leader>k <Plug>(easymotion-sol-k)
-"
-" nmap <Leader>l <Plug>(easymotion-w)
-" vmap <Leader>l <Plug>(easymotion-w)
-" nmap <Leader>h <Plug>(easymotion-b)
-" vmap <Leader>h <Plug>(easymotion-b)
+nmap <Leader>j <Plug>(easymotion-j)
+vmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+vmap <Leader>k <Plug>(easymotion-k)
+nmap <Leader>j <Plug>(easymotion-sol-j)
+vmap <Leader>j <Plug>(easymotion-sol-j
+nmap <Leader>k <Plug>(easymotion-sol-k)
+vmap <Leader>k <Plug>(easymotion-sol-k)
+
+nmap <Leader>l <Plug>(easymotion-w)
+vmap <Leader>l <Plug>(easymotion-w)
+nmap <Leader>h <Plug>(easymotion-b)
+vmap <Leader>h <Plug>(easymotion-b)
 
 " nmap <Leader>; <Plug>(easymotion-jumptoanywhere)
 " vmap <Leader>; <Plug>(easymotion-jumptoanywhere)
 
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-" nmap <leader>s <Plug>(easymotion-s)
+Bi-directional find motion
+Jump to anywhere you want with minimal keystrokes, with just one key binding.
+`s{char}{label}`
+nmap <leader>s <Plug>(easymotion-s)
 
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-" nmap <leader>s <Plug>(easymotion-s2)
+or
+`s{char}{char}{label}`
+Need one more keystroke, but on average, it may be more comfortable.
+nmap <leader>s <Plug>(easymotion-s2)
 
 " Quickfixウィンドウの開閉をトグルするAdd Star
 function! s:toggle_quickfix_window()
