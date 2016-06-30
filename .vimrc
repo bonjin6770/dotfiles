@@ -797,7 +797,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "=============================================================================
 " プラグイン設定
 "=============================================================================
-<<<<<<< HEAD
 source $HOME/dotfiles/.vimrc.plugin.neobundle
 " source $HOME/dotfiles/.plugin.neocomplete.vimrc
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -871,7 +870,7 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-=======
+
 " -------------------------------------------------------------------
 " プラグイン設定 > neobundle
 " -------------------------------------------------------------------
@@ -1203,14 +1202,14 @@ vmap <Leader>h <Plug>(easymotion-b)
 " nmap <Leader>; <Plug>(easymotion-jumptoanywhere)
 " vmap <Leader>; <Plug>(easymotion-jumptoanywhere)
 
-Bi-directional find motion
-Jump to anywhere you want with minimal keystrokes, with just one key binding.
-`s{char}{label}`
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
 nmap <leader>s <Plug>(easymotion-s)
 
-or
-`s{char}{char}{label}`
-Need one more keystroke, but on average, it may be more comfortable.
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
 nmap <leader>s <Plug>(easymotion-s2)
 
 " Quickfixウィンドウの開閉をトグルするAdd Star
