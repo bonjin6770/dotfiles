@@ -252,6 +252,7 @@ let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore
 let g:ctrlp_use_caching = 0
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
+" noremap <leader>p :CtrlPBuffer<CR>
 " noremap <leader>ls :CtrlPBuffer<CR>
 let g:ctrlp_map = ',e'
 let g:ctrlp_open_new_file = 'r'
@@ -796,6 +797,81 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "=============================================================================
 " プラグイン設定
 "=============================================================================
+<<<<<<< HEAD
+source $HOME/dotfiles/.vimrc.plugin.neobundle
+" source $HOME/dotfiles/.plugin.neocomplete.vimrc
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+=======
 " -------------------------------------------------------------------
 " プラグイン設定 > neobundle
 " -------------------------------------------------------------------
@@ -1093,7 +1169,7 @@ noremap <leader>e vi"
 " noremap <leader>e vi"p
 
 "<Leader><Leader>で変更があれば保存
-noremap <Leader><Leader> :up<CR>
+noremap <Leader><Leader><Leader> :up<CR>
 
 " ScrExpl
 " nnoremap <Leader>o :SrcExplToggle<CR>
@@ -1110,10 +1186,10 @@ map <Leader>'g  :MemoGrep<CR>
 " JK motions: Line motions
 "# keep cursor colum JK motion
 let g:EasyMotion_startofline = 0
-" nmap <Leader>j <Plug>(easymotion-j)
-" vmap <Leader>j <Plug>(easymotion-j)
-" nmap <Leader>k <Plug>(easymotion-k)
-" vmap <Leader>k <Plug>(easymotion-k)
+nmap <Leader>j <Plug>(easymotion-j)
+vmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+vmap <Leader>k <Plug>(easymotion-k)
 nmap <Leader>j <Plug>(easymotion-sol-j)
 vmap <Leader>j <Plug>(easymotion-sol-j
 nmap <Leader>k <Plug>(easymotion-sol-k)
@@ -1127,15 +1203,15 @@ vmap <Leader>h <Plug>(easymotion-b)
 " nmap <Leader>; <Plug>(easymotion-jumptoanywhere)
 " vmap <Leader>; <Plug>(easymotion-jumptoanywhere)
 
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
+Bi-directional find motion
+Jump to anywhere you want with minimal keystrokes, with just one key binding.
+`s{char}{label}`
 nmap <leader>s <Plug>(easymotion-s)
 
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-" nmap <leader>s <Plug>(easymotion-s2)
+or
+`s{char}{char}{label}`
+Need one more keystroke, but on average, it may be more comfortable.
+nmap <leader>s <Plug>(easymotion-s2)
 
 " Quickfixウィンドウの開閉をトグルするAdd Star
 function! s:toggle_quickfix_window()
@@ -1186,8 +1262,8 @@ nnoremap <F8> :cnext <CR>
 " <F9>
 
 " <F10>
-" noremap <F3> :NERDTreeToggle<CR>
-nnoremap <silent> <F10> :NERDTreeFind<CR>
+noremap <silent> <F10> :NERDTreeToggle<CR>
+" nnoremap <silent> <F10> :NERDTreeFind<CR>
 " <F11>
 " <F12> 検索結果の表示()
 nnoremap <F12> <C-]>
