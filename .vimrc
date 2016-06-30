@@ -1020,7 +1020,6 @@ filetype plugin indent on
 NeoBundleCheck
 
 source $HOME/dotfiles/.plugin.neocomplete.vimrc
->>>>>>> 8dba35ea4686111b0eb371d1da6067826f202e1e
 source $HOME/dotfiles/.vimrc.plugin.neosnippet
 source $HOME/dotfiles/.plugin.jedi_vim.vimrc
 source $HOME/dotfiles/.plugin.pymode.vimrc
@@ -1169,7 +1168,7 @@ noremap <leader>e vi"
 " noremap <leader>e vi"p
 
 "<Leader><Leader>で変更があれば保存
-noremap <Leader><Leader> :up<CR>
+noremap <Leader><Leader><Leader> :up<CR>
 
 " ScrExpl
 " nnoremap <Leader>o :SrcExplToggle<CR>
