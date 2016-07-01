@@ -207,7 +207,7 @@ au FileType make set noexpandtab
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
 if has("gui_running")
-  autocmd BufWritePre * :call TrimWhiteSpace()
+  " autocmd BufWritePre * :call TrimWhiteSpace()
 endif
 
 set autoread
@@ -907,7 +907,7 @@ NeoBundle 'vim-scripts/vimdir.vim'
 NeoBundle 'vim-scripts/ReplaceWithSameIndentRegister'
 " NeoBundle 'vim-scripts/ShowWhiteSpace'
 NeoBundle 'vim-scripts/exjumplist'
-NeoBundle 'vim-scripts/YankRing.vim'
+" NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'vim-scripts/bufferlist.vim'
@@ -920,11 +920,11 @@ NeoBundle 'mattn/sonictemplate-vim'
 NeoBundle 'vim-scripts/tagexplorer.vim'
 " NeoBundle 'vim-scripts/Changed'
 NeoBundle 'vim-scripts/closetag.vim'
-NeoBundle "osyo-manga/vim-milfeulle"
+" NeoBundle "osyo-manga/vim-milfeulle"
 " NeoBundle "mhinz/vim-startify"
 NeoBundle "terryma/vim-expand-region"
 NeoBundle "vim-scripts/savevers.vim"
-NeoBundle 'glidenote/memolist.vim'
+" NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'thinca/vim-poslist'
@@ -963,12 +963,12 @@ NeoBundleLazy 'osyo-manga/vim-stargate', {
 NeoBundle 'vim-scripts/delphi.vim'
 
 " FOR C++
-NeoBundle 'vim-scripts/Switch-cpp-header-files'
+" NeoBundle 'vim-scripts/Switch-cpp-header-files'
 
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
+" NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
@@ -991,13 +991,16 @@ NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'tomasr/molokai'
 
 "" Python Bundle
-NeoBundle "davidhalter/jedi-vim"
-NeoBundle "scrooloose/syntastic"
+" NeoBundle "davidhalter/jedi-vim"
+" NeoBundle "scrooloose/syntastic"
 NeoBundle "majutsushi/tagbar"
 " NeoBundle "Yggdroot/indentLine"
 
 "" C Bundle
 NeoBundle 'vim-scripts/c.vim'
+
+
+
 
 
 "" HTML Bundle
@@ -1010,19 +1013,21 @@ NeoBundle 'vim-scripts/c.vim'
 NeoBundle 'arnaud-lb/vim-php-namespace'
 
 "" Javascript Bundle
-NeoBundle "scrooloose/syntastic"
+" NeoBundle "scrooloose/syntastic"
 
 call neobundle#end()
 
 " Required:
 filetype plugin indent on
 
+
+
 NeoBundleCheck
 
 source $HOME/dotfiles/.plugin.neocomplete.vimrc
 source $HOME/dotfiles/.vimrc.plugin.neosnippet
 source $HOME/dotfiles/.plugin.jedi_vim.vimrc
-source $HOME/dotfiles/.plugin.pymode.vimrc
+" source $HOME/dotfiles/.plugin.pymode.vimrc
 source $HOME/dotfiles/.vimrc.plugin.vim-quickhl
 source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
