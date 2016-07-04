@@ -18,12 +18,12 @@ git clone https://github.com/Shougo/neobundle.vim
 cd %HOMEPATH%
 git clone https://github.com/bonjin6770/dotfiles
 
-mklink %HOMEPATH%"\.vimrc" %HOMEPATH%"\dotfiles\.vimrc"
-mklink %HOMEPATH%"\.gvimrc" %HOMEPATH%"\dotfiles\.gvimrc"
+mklink "%HOMEPATH%\.vimrc" "%HOMEPATH%\dotfiles\.vimrc"
+mklink "%HOMEPATH%\.gvimrc" "%HOMEPATH%\dotfiles\.gvimrc"
 
-mklink /D %HOMEPATH%"\vimfiles" %HOMEPATH%"\dotfiles"
-mklink /D %HOMEPATH%"\vimfiles\indent" %HOMEPATH%"\dotfiles\indent"
-mklink /D %HOMEPATH%"\vimfiles\colors" %HOMEPATH%"\dotfiles\colors"
-mklink /D %HOMEPATH%"\vimfiles\dict" %HOMEPATH%"\dotfiles\dict"
+mklink /D "%HOMEPATH%\vimfiles" "%HOMEPATH%\dotfiles"
+mklink /D "%HOMEPATH%\vimfiles\indent" "%HOMEPATH%\dotfiles\indent"
+mklink /D "%HOMEPATH%\vimfiles\colors" "%HOMEPATH%\dotfiles\colors"
+mklink /D "%HOMEPATH%\vimfiles\dict" "%HOMEPATH%\dotfiles\dict"
 
 pause
