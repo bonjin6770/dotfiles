@@ -1026,7 +1026,19 @@ NeoBundleCheck
 
 source $HOME/dotfiles/.plugin.neocomplete.vimrc
 source $HOME/dotfiles/.vimrc.plugin.neosnippet
-source $HOME/dotfiles/.plugin.jedi_vim.vimrc
+" /////////////////////////////////////////////////////////////////////////////
+" source $HOME/dotfiles/.plugin.jedi_vim.vimrc
+" neocompleteと連携
+autocmd FileType python setlocal omnifunc=jedi#completions
+
+let g:jedi#auto_vim_configuration = 0
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
+endif
+" /////////////////////////////////////////////////////////////////////////////
+
+let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'
 " source $HOME/dotfiles/.plugin.pymode.vimrc
 source $HOME/dotfiles/.vimrc.plugin.vim-quickhl
 source $HOME/dotfiles/.vimrc.plugin.unite-outline
