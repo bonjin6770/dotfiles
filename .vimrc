@@ -276,7 +276,7 @@ let g:syntastic_aggregate_errors = 1
 let g:airline_enable_syntastic = 1
 
 "" Remove trailing whitespace on <leader>S
-nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
+" nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
 
 "" Copy/Paste/Cut
 noremap YY "+y<CR>
@@ -1186,6 +1186,7 @@ noremap <leader>e vi"
 
 "<Leader><Leader>で変更があれば保存
 noremap <Leader><Leader><Leader> :up<CR>
+" noremap <Leader><Leader> :up<CR>
 
 " ScrExpl
 " nnoremap <Leader>o :SrcExplToggle<CR>
@@ -1222,12 +1223,12 @@ vmap <Leader>h <Plug>(easymotion-b)
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap <leader>s <Plug>(easymotion-s)
+" nmap <leader>s <Plug>(easymotion-s)
 
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
-nmap <leader>s <Plug>(easymotion-s2)
+" nmap <leader>s <Plug>(easymotion-s2)
 
 " Quickfixウィンドウの開閉をトグルするAdd Star
 function! s:toggle_quickfix_window()
