@@ -856,7 +856,6 @@ NeoBundle 'vim-scripts/closetag.vim'
 " NeoBundle "osyo-manga/vim-milfeulle"
 " NeoBundle "mhinz/vim-startify"
 NeoBundle "terryma/vim-expand-region"
-" NeoBundle "vim-scripts/savevers.vim"
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'thinca/vim-poslist'
@@ -991,24 +990,6 @@ let g:EasyMotion_smartcase = 1
 " map <Leader>k <Plug>(easymotion-k)
 
 let g:EasyMotion_startofline=0
-
-
-
-" -------------------------------------------------------------------
-"  plugin savevers
-" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
-" -------------------------------------------------------------------
-" バックアップを有効にするかどうか。このスクリプトを使うためには有効にしなければならない。Vimの基本設定の1つ。
-:set backup
-" バックアップを保存するディレクトリ。Vimの基本設定の1つ。
-set backupdir=~/temp
-:set patchmode=.clean
-" バージョンの管理をするファイルの種類
-:let savevers_types = "*"
-" バージョン管理ファイルを保存するディレクトリ。
-:let savevers_dirs = &backupdir
-" 各バージョンとのdiffを表示する時に、ウィンドウサイズを変化させるかどうか。
-:let versdiff_no_resize=1
 
 " -------------------------------------------------------------------
 " plugin qfixgrep
@@ -1145,13 +1126,12 @@ noremap <leader>e vi"
 " noremap <leader>e vi"p
 
 "<Leader><Leader>で変更があれば保存
-noremap <Leader><Leader><Leader> :up<CR>
-" noremap <Leader><Leader> :up<CR>
+" noremap <Leader><Leader><Leader> :up<CR>
+noremap <Leader><Leader> :up<CR>
 
 " ScrExpl
 " nnoremap <Leader>o :SrcExplToggle<CR>
 
-" savevers.vim VersDiffから抜ける
 " noremap <Leader>vq :VersDiff -c<CR>
 
 
