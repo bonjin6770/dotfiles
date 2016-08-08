@@ -857,7 +857,6 @@ NeoBundle 'vim-scripts/closetag.vim'
 " NeoBundle "mhinz/vim-startify"
 NeoBundle "terryma/vim-expand-region"
 NeoBundle "vim-scripts/savevers.vim"
-" NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'thinca/vim-poslist'
@@ -985,11 +984,19 @@ let MyGrepcmd_useropt = '-i'
 " QFixGrepの検索時にカーソル位置の単語を拾う/拾わない
 let MyGrep_DefaultSearchWord = 1
 
+
+"////////////////////////////////////////////////////////////////////
+" plugin matchit
+"「%」による対応括弧へのカーソル移動機能を拡張
+"////////////////////////////////////////////////////////////////////
 " -------------------------------------------------------------------
 " matchit.vimの有効化
 source $VIMRUNTIME/macros/matchit.vim
-source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.matchit
-source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.memolist
+" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.matchit
+" 大文字小文字の区別をしないようにする。
+let b:match_ignorecase = 1
+"
+let b:match_words = &matchpairs .  ',<begin>:<end>,<if>:<endif>,<if>:<end>,<if>:<end if>,<if>:<elseif>,<if>:<else if>,<if*then begin>:<end>,<if*then begin>:<else if>,<if*then begin>:<else>'
 
 "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 " テンプレート
@@ -1101,10 +1108,6 @@ noremap <Leader><Leader><Leader> :up<CR>
 " savevers.vim VersDiffから抜ける
 noremap <Leader>vq :VersDiff -c<CR>
 
-" memolist.vim
-map <Leader>'n  :MemoNew<CR>
-map <Leader>'l  :MemoList<CR>
-map <Leader>'g  :MemoGrep<CR>
 
 " vim-easymotion
 " JK motions: Line motions
