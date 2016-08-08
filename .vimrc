@@ -856,7 +856,7 @@ NeoBundle 'vim-scripts/closetag.vim'
 " NeoBundle "osyo-manga/vim-milfeulle"
 " NeoBundle "mhinz/vim-startify"
 NeoBundle "terryma/vim-expand-region"
-NeoBundle "vim-scripts/savevers.vim"
+" NeoBundle "vim-scripts/savevers.vim"
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'thinca/vim-poslist'
@@ -958,14 +958,61 @@ source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
 source $HOME/dotfiles/.vimrc.plugin.vim-airline
 source $HOME/dotfiles/.vimrc.plugin.YankRing
-source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
-source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-milfeulle
-source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-easymotion
+
 
 " -------------------------------------------------------------------
-" プラグイン設定 > qfixgrep
+"  plugin vim-milfeulle
+" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-milfeulle
 " -------------------------------------------------------------------
+" 別のバッファへ移動する場合、そのウィンドウでバッファを開く
+let g:milfeulle_default_jumper_name = "bufnr_pos"
 
+
+" -------------------------------------------------------------------
+"  plugin vim-easymotion
+" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.vim-easymotion
+" -------------------------------------------------------------------
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap <leader>s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+" nmap <leader>s <Plug>(easymotion-s2)
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
+
+let g:EasyMotion_startofline=0
+
+
+
+" -------------------------------------------------------------------
+"  plugin savevers
+" source $HOME/dotfiles/vimrc/plugin/.vimrc.plugin.savevers
+" -------------------------------------------------------------------
+" バックアップを有効にするかどうか。このスクリプトを使うためには有効にしなければならない。Vimの基本設定の1つ。
+:set backup
+" バックアップを保存するディレクトリ。Vimの基本設定の1つ。
+set backupdir=~/temp
+:set patchmode=.clean
+" バージョンの管理をするファイルの種類
+:let savevers_types = "*"
+" バージョン管理ファイルを保存するディレクトリ。
+:let savevers_dirs = &backupdir
+" 各バージョンとのdiffを表示する時に、ウィンドウサイズを変化させるかどうか。
+:let versdiff_no_resize=1
+
+" -------------------------------------------------------------------
+" plugin qfixgrep
+" -------------------------------------------------------------------
 "Grepコマンドのキーマップ
 let MyGrep_Key  = '<space>'
 "Grepコマンドの2ストローク目キーマップ
@@ -985,10 +1032,9 @@ let MyGrepcmd_useropt = '-i'
 let MyGrep_DefaultSearchWord = 1
 
 
-"////////////////////////////////////////////////////////////////////
+" -------------------------------------------------------------------
 " plugin matchit
-"「%」による対応括弧へのカーソル移動機能を拡張
-"////////////////////////////////////////////////////////////////////
+"  「%」による対応括弧へのカーソル移動機能を拡張
 " -------------------------------------------------------------------
 " matchit.vimの有効化
 source $VIMRUNTIME/macros/matchit.vim
@@ -1106,7 +1152,7 @@ noremap <Leader><Leader><Leader> :up<CR>
 " nnoremap <Leader>o :SrcExplToggle<CR>
 
 " savevers.vim VersDiffから抜ける
-noremap <Leader>vq :VersDiff -c<CR>
+" noremap <Leader>vq :VersDiff -c<CR>
 
 
 " vim-easymotion
@@ -1211,11 +1257,11 @@ nnoremap <S-F4> :Template<Space>
 map <silent> <S-F5> :call BufferList()<CR>
 " <S-F6>
 " <S-F7>  savevers.vim ひとつ前のバックアップと比較
-nnoremap <S-F7> :VersDiff -<CR>
+" nnoremap <S-F7> :VersDiff -<CR>
 " <S-F8> savevers.vim ひとつ後のバックアップと比較
-nnoremap <S-F8> :VersDiff +<CR>
+" nnoremap <S-F8> :VersDiff +<CR>
 " <S-F9> savevers.vim VersDiffから抜ける
-nnoremap <S-F9> :VersDiff -C<CR>
+" nnoremap <S-F9> :VersDiff -C<CR>
 " <S-F10>
 " <S-F11> 現在開いているすべてのバッファからgrep
 "         見えているバッファからgrepする場合は、bufdoの代わりにwindoを使う

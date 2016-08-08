@@ -1,2 +1,0 @@
-" 別のバッファへ移動する場合、そのウィンドウでバッファを開く
-let g:milfeulle_default_jumper_name = "bufnr_pos"
