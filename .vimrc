@@ -879,6 +879,7 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'godlygeek/tabular'
 
 " Snippete
 NeoBundle "honza/vim-snippets"
