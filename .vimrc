@@ -876,6 +876,9 @@ NeoBundle 'yuku-t/vim-ref-ri'
 NeoBundle 'tpope/vim-endwise'
 " NeoBundle 'xolox/vim-easytags'
 " NeoBundle 'supermomonga/projectlocal.vim'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
 " Snippete
 NeoBundle "honza/vim-snippets"
@@ -1485,3 +1488,10 @@ augroup END
 if !has('gui_running') && &encoding != 'cp932' && &term == 'win32'
   set termencoding=cp932
 endif
+
+
+"----------------------------------------
+" MarkDown
+"----------------------------------------
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:previm_open_cmd = 'open -a Firefox'
