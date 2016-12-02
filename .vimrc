@@ -874,8 +874,6 @@ NeoBundle 'yuku-t/vim-ref-ri'
 " NeoBundle 'szw/vim-tags'
 " 自動で閉じる
 NeoBundle 'tpope/vim-endwise'
-" NeoBundle 'xolox/vim-easytags'
-" NeoBundle 'supermomonga/projectlocal.vim'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
@@ -883,7 +881,6 @@ NeoBundle 'godlygeek/tabular'
 
 " Snippete
 NeoBundle "honza/vim-snippets"
-
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
@@ -1496,4 +1493,5 @@ endif
 "----------------------------------------
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:vim_markdown_folding_disabled = 1
-let g:previm_open_cmd = 'open -a Firefox'
+" let g:previm_open_cmd = 'open -a Firefox'
+let g:vim_markdown_folding_level = 1
