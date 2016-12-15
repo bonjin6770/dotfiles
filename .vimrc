@@ -133,12 +133,6 @@ set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
-let g:airline_theme = 'powerlineish'
-" let g:airline_enable_branch = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
 "*****************************************************************************
 "" Abbreviations
 let s:settings_abbreviations = 'abbreviations'
@@ -244,25 +238,6 @@ noremap <Leader>e :ex <C-R>=expand("%:p:h") . "/" <CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-"" ctrlp.vim
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 0
-cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-noremap <leader>b :CtrlPBuffer<CR>
-" noremap <leader>p :CtrlPBuffer<CR>
-" noremap <leader>ls :CtrlPBuffer<CR>
-let g:ctrlp_map = ',e'
-let g:ctrlp_open_new_file = 'r'
-
-" snippets
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-" let g:UltiSnipsEditSplit="vertical"
-
 " syntastic
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_error_symbol='✗'
@@ -271,9 +246,6 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
-
-" vim-airline
-" let g:airline_enable_syntastic = 1
 
 "" Remove trailing whitespace on <leader>S
 " nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
@@ -325,10 +297,6 @@ let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 
 let g:syntastic_python_checkers=['python', 'flake8']
-
-" vim-airline
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -891,15 +859,9 @@ NeoBundleLazy 'osyo-manga/vim-stargate', {
 
 NeoBundle 'vim-scripts/delphi.vim'
 
-" FOR C++
-" NeoBundle 'vim-scripts/Switch-cpp-header-files'
 
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-commentary'
-" NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'bling/vim-airline'
-" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'
@@ -928,10 +890,6 @@ NeoBundle "majutsushi/tagbar"
 "" C Bundle
 NeoBundle 'vim-scripts/c.vim'
 
-
-
-
-
 "" HTML Bundle
 ""NeoBundle 'amirh/HTML-AutoCloseTag'
 " NeoBundle 'hail2u/vim-css3-syntax'
@@ -944,11 +902,13 @@ NeoBundle 'arnaud-lb/vim-php-namespace'
 "" Javascript Bundle
 " NeoBundle "scrooloose/syntastic"
 
+" NeoBundle "bonjin6770/helloworld-vim"
+NeoBundle "bonjin6770/helloworld-function.vim"
+
 call neobundle#end()
 
 " Required:
 filetype plugin indent on
-
 
 
 NeoBundleCheck
@@ -961,9 +921,7 @@ let g:jedi#auto_vim_configuration = 0
 source $HOME/dotfiles/.vimrc.plugin.vim-quickhl
 source $HOME/dotfiles/.vimrc.plugin.unite-outline
 source $HOME/dotfiles/.vimrc.plugin.vim-indent-guides
-source $HOME/dotfiles/.vimrc.plugin.vim-airline
 source $HOME/dotfiles/.vimrc.plugin.YankRing
-
 
 " -------------------------------------------------------------------
 "  plugin vim-milfeulle
@@ -1007,6 +965,11 @@ let MyGrep_KeyB = 'g'
 
 " let mygrepprg = 'internal'
 
+  " 検索ディレクトリはカレントディレクトリを基点にする
+  " 0 : 現バッファのファイルが存在するディレクトリ
+  " 1 : カレントディレクトリ
+  let MyGrep_CurrentDirMode = 1
+
 " 検索は常に再帰検索
 let MyGrep_RecursiveMode = 1
 
@@ -1018,6 +981,14 @@ let MyGrepcmd_useropt = '-i'
 " QFixGrepの検索時にカーソル位置の単語を拾う/拾わない
 let MyGrep_DefaultSearchWord = 1
 
+" QuickFixウィンドウを使用する
+let QFix_UseLocationList = 0
+
+" QuickFixウィンドウでプレビューを有効にする
+let QFix_PreviewEnable = 0
+
+  " QuickFixウィンドウから開いた後ウィンドウを閉じる
+  let QFix_CloseOnJump = 1
 
 " -------------------------------------------------------------------
 " plugin matchit
@@ -1106,7 +1077,6 @@ vnoremap <leader><C-v> p
 noremap <leader><C-z> u
 noremap <leader><C-z> <C-r>
 
-
 " <Leader>a
 " <Leader>b
 " <Leader>c : quickfix用のプレフィックス
@@ -1135,12 +1105,6 @@ noremap <leader>e vi"
 " noremap <Leader><Leader><Leader> :up<CR>
 noremap <Leader><Leader> :up<CR>
 
-" ScrExpl
-" nnoremap <Leader>o :SrcExplToggle<CR>
-
-" noremap <Leader>vq :VersDiff -c<CR>
-
-
 " vim-easymotion
 " JK motions: Line motions
 "# keep cursor colum JK motion
@@ -1159,31 +1123,6 @@ vmap <Leader>l <Plug>(easymotion-w)
 nmap <Leader>h <Plug>(easymotion-b)
 vmap <Leader>h <Plug>(easymotion-b)
 
-" nmap <Leader>; <Plug>(easymotion-jumptoanywhere)
-" vmap <Leader>; <Plug>(easymotion-jumptoanywhere)
-
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-" nmap <leader>s <Plug>(easymotion-s)
-
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-" nmap <leader>s <Plug>(easymotion-s2)
-
-" Quickfixウィンドウの開閉をトグルするAdd Star
-function! s:toggle_quickfix_window()
-  for _ in range(1, winnr('$'))
-    execute _ . 'wincmd w'
-    if &l:filetype ==# 'qf'
-      close
-      return
-    endif
-  endfor
-  cwindow
-endfunction
-nnoremap <silent> <Leader>9 :<C-u>call <SID>toggle_quickfix_window()<CR>
 "=============================================================================
 " The prefix key.
 "=============================================================================
@@ -1195,66 +1134,9 @@ nnoremap <silent> [Tag]n :<C-u>tag<CR>
 nnoremap <silent> [Tag]p :<C-u>pop<CR>
 nnoremap <silent> [Tag]l :<C-u>tags<CR>
 
-" <C-G> grep
 nmap <C-G> :vimgrep /<C-R><C-W>/j %
-
-" <F1> Vim Help
-" <F2>
-" <F3> カーソルがある行から [count] 個先の小文字のマークがある行の最初の非空白文字へ移動します。{Vi にはありません}
-" nnoremap <F3> :<C-u>call <SID>AutoMarkrement_NextJump()<CR>
-" <F4>
-
-" <F5>
-" map <silent> <F5> :NERDTree b:projectlocal_root_dir
-
-" <F6> SrcExpl.vim
-" nnoremap <F6> :SrcExplToggle<CR>
-
-" <F6>
-
-" <F7> 前の該当位置へジャンプ
-nnoremap <F7> :cprevious <CR>
-
-" <F8> 次の該当位置へジャンプ
-nnoremap <F8> :cnext <CR>
-
-" <F9>
-
-" <F10>
-noremap <silent> <F10> :NERDTreeToggle<CR>
-" nnoremap <silent> <F10> :NERDTreeFind<CR>
-" <F11>
-" <F12> 検索結果の表示()
-nnoremap <F12> <C-]>
-" -------------------------------------------------------------------
-" S-F[1~12]
-"
-
-" <S-F1>
-" <S-F2>
-" <S-F3>
-" カーソル位置より [count] 個前の小文字のマークへ移動します。{Vi にはありません}
-" nnoremap <silent> <S-F3> :NERDTreeFind<CR>
-" nnoremap <S-F3> :<C-u>call <SID>AutoMarkrement_PreJump()<CR>
-" <S-F4> Template
 nnoremap <S-F4> :Template<Space>
-" <S-F5>
-" nmap <S-F5> :ls<CR>:b
 map <silent> <S-F5> :call BufferList()<CR>
-" <S-F6>
-" <S-F7>  savevers.vim ひとつ前のバックアップと比較
-" nnoremap <S-F7> :VersDiff -<CR>
-" <S-F8> savevers.vim ひとつ後のバックアップと比較
-" nnoremap <S-F8> :VersDiff +<CR>
-" <S-F9> savevers.vim VersDiffから抜ける
-" nnoremap <S-F9> :VersDiff -C<CR>
-" <S-F10>
-" <S-F11> 現在開いているすべてのバッファからgrep
-"         見えているバッファからgrepする場合は、bufdoの代わりにwindoを使う
-"         実行するたびにQuickfixが追加されてしまうので、 cexpr "" を実行すること
-nnoremap <S-F11> :bufdo vimgrepadd /<C-R><C-K>/j **/* %<CR>
-" <S-F12> カーソル位置の単語でgrep
-nnoremap <S-F12> :vimgrep /<C-R><C-W>/j **/*
 
 " Mark用
 if !exists('g:markrement_char')
